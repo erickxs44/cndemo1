@@ -9,38 +9,98 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as MarcasRouteImport } from './routes/marcas'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MarcaSlugRouteImport } from './routes/marca.$slug'
+import { Route as CategoriaSlugRouteImport } from './routes/categoria.$slug'
 
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarcasRoute = MarcasRouteImport.update({
+  id: '/marcas',
+  path: '/marcas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MarcaSlugRoute = MarcaSlugRouteImport.update({
+  id: '/marca/$slug',
+  path: '/marca/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CategoriaSlugRoute = CategoriaSlugRouteImport.update({
+  id: '/categoria/$slug',
+  path: '/categoria/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/marcas': typeof MarcasRoute
+  '/sobre': typeof SobreRoute
+  '/categoria/$slug': typeof CategoriaSlugRoute
+  '/marca/$slug': typeof MarcaSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/marcas': typeof MarcasRoute
+  '/sobre': typeof SobreRoute
+  '/categoria/$slug': typeof CategoriaSlugRoute
+  '/marca/$slug': typeof MarcaSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/marcas': typeof MarcasRoute
+  '/sobre': typeof SobreRoute
+  '/categoria/$slug': typeof CategoriaSlugRoute
+  '/marca/$slug': typeof MarcaSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/marcas' | '/sobre' | '/categoria/$slug' | '/marca/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/marcas' | '/sobre' | '/categoria/$slug' | '/marca/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/marcas'
+    | '/sobre'
+    | '/categoria/$slug'
+    | '/marca/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MarcasRoute: typeof MarcasRoute
+  SobreRoute: typeof SobreRoute
+  CategoriaSlugRoute: typeof CategoriaSlugRoute
+  MarcaSlugRoute: typeof MarcaSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marcas': {
+      id: '/marcas'
+      path: '/marcas'
+      fullPath: '/marcas'
+      preLoaderRoute: typeof MarcasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +108,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/marca/$slug': {
+      id: '/marca/$slug'
+      path: '/marca/$slug'
+      fullPath: '/marca/$slug'
+      preLoaderRoute: typeof MarcaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/categoria/$slug': {
+      id: '/categoria/$slug'
+      path: '/categoria/$slug'
+      fullPath: '/categoria/$slug'
+      preLoaderRoute: typeof CategoriaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MarcasRoute: MarcasRoute,
+  SobreRoute: SobreRoute,
+  CategoriaSlugRoute: CategoriaSlugRoute,
+  MarcaSlugRoute: MarcaSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
