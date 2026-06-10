@@ -3,18 +3,8 @@ import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { ProductCard } from "@/components/site/ProductCard";
 import { QuickView } from "@/components/site/QuickView";
-import { BRANDS, PRODUCTS, type Product } from "@/lib/store-data";
-import brandLacoste from "@/assets/brand-lacoste.jpg";
-import brandArmani from "@/assets/brand-armani.jpg";
-import brandReserva from "@/assets/brand-reserva.jpg";
-import brandAramis from "@/assets/brand-aramis.jpg";
+import { BRANDS, PRODUCTS, BRAND_IMAGES, type Product } from "@/lib/store-data";
 
-const IMG: Record<string, string> = {
-  lacoste: brandLacoste,
-  armani: brandArmani,
-  reserva: brandReserva,
-  aramis: brandAramis,
-};
 
 export const Route = createFileRoute("/marca/$slug")({
   loader: ({ params }) => {
@@ -37,7 +27,7 @@ function BrandPage() {
   const { brand } = Route.useLoaderData();
   const [quick, setQuick] = useState<Product | null>(null);
   const products = PRODUCTS.filter(p => p.brand.toLowerCase().includes(brand.name.toLowerCase().split(" ")[0].toLowerCase()));
-  const image = IMG[brand.slug];
+  const image = BRAND_IMAGES[brand.slug];
 
   return (
     <Layout>

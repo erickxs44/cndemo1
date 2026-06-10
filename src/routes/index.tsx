@@ -4,12 +4,8 @@ import { Layout } from "@/components/site/Layout";
 import { BrandSection } from "@/components/site/BrandSection";
 import { ProductCard } from "@/components/site/ProductCard";
 import { QuickView } from "@/components/site/QuickView";
-import { PRODUCTS, BRANDS, CATEGORIES, type Product } from "@/lib/store-data";
+import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES, type Product } from "@/lib/store-data";
 import heroBg from "@/assets/hero-bg.jpg";
-import brandLacoste from "@/assets/brand-lacoste.jpg";
-import brandArmani from "@/assets/brand-armani.jpg";
-import brandReserva from "@/assets/brand-reserva.jpg";
-import brandAramis from "@/assets/brand-aramis.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,12 +17,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const BRAND_IMAGES: Record<string, string> = {
-  lacoste: brandLacoste,
-  armani: brandArmani,
-  reserva: brandReserva,
-  aramis: brandAramis,
-};
 
 function Index() {
   const [quick, setQuick] = useState<Product | null>(null);

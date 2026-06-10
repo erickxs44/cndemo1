@@ -1,12 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
-import { BRANDS } from "@/lib/store-data";
-import brandLacoste from "@/assets/brand-lacoste.jpg";
-import brandArmani from "@/assets/brand-armani.jpg";
-import brandReserva from "@/assets/brand-reserva.jpg";
-import brandAramis from "@/assets/brand-aramis.jpg";
+import { BRANDS, BRAND_IMAGES } from "@/lib/store-data";
 
-const IMG: Record<string,string> = { lacoste:brandLacoste, armani:brandArmani, reserva:brandReserva, aramis:brandAramis };
 
 export const Route = createFileRoute("/marcas")({
   head: () => ({ meta: [{ title: "Marcas — CN STORE" }, { name: "description", content: "Conheça as marcas premium parceiras da CN STORE." }] }),
@@ -28,7 +23,7 @@ function Marcas() {
             params={{ slug: b.slug }}
             className="group relative aspect-[4/5] overflow-hidden border border-white/5 hover:border-[var(--gold)] transition reveal"
           >
-            <img src={IMG[b.slug]} alt={b.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img src={BRAND_IMAGES[b.slug]} alt={b.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
             <div className="absolute inset-0 p-10 flex flex-col justify-end">
               <h2 className="font-display text-5xl text-white group-hover:text-[var(--gold)] transition">{b.name}</h2>
