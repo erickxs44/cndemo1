@@ -28,7 +28,7 @@ function Marcas() {
             params={{ slug: b.slug }}
             className="group relative aspect-[4/5] overflow-hidden border border-white/5 hover:border-[var(--gold)] transition reveal"
           >
-            <img src={IMG[b.slug]} alt={b.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <img src={BRAND_IMAGES[b.slug]} alt={b.name} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
             <div className="absolute inset-0 p-10 flex flex-col justify-end">
               <h2 className="font-display text-5xl text-white group-hover:text-[var(--gold)] transition">{b.name}</h2>
