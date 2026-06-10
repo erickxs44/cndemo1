@@ -4,6 +4,28 @@ import shirt1 from "@/assets/product-shirt-1.jpg";
 import shirt2 from "@/assets/product-shirt-2.jpg";
 import bermuda1 from "@/assets/product-bermuda-1.jpg";
 import pants1 from "@/assets/product-pants-1.jpg";
+import bRalph from "@/assets/brands/ralph-lauren.jpg";
+import bHugo from "@/assets/brands/hugo-boss.jpg";
+import bTommy from "@/assets/brands/tommy-hilfiger.jpg";
+import bArmani from "@/assets/brands/armani.jpg";
+import bCalvin from "@/assets/brands/calvin-klein.jpg";
+import bLacoste from "@/assets/brands/lacoste.jpg";
+import bBrooks from "@/assets/brands/brooksfield.jpg";
+import bPrada from "@/assets/brands/prada.jpg";
+import bAdidas from "@/assets/brands/adidas.jpg";
+
+export const BRAND_IMAGES: Record<string, string> = {
+  "ralph-lauren": bRalph,
+  "hugo-boss": bHugo,
+  "tommy-hilfiger": bTommy,
+  "armani": bArmani,
+  "calvin-klein": bCalvin,
+  "lacoste": bLacoste,
+  "brooksfield": bBrooks,
+  "prada": bPrada,
+  "adidas": bAdidas,
+};
+
 
 export type Product = {
   id: string;
