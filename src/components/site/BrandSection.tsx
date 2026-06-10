@@ -9,30 +9,39 @@ type Props = {
   reverse?: boolean;
 };
 
-export function BrandSection({ brandSlug, name, image }: Props) {
+export function BrandSection({ brandSlug, name, image, reverse }: Props) {
   return (
-    <section className="relative w-full px-6 lg:px-10 py-12 reveal">
-      <Link
-        to="/marca/$slug"
-        params={{ slug: brandSlug }}
-        aria-label={`Ver coleção ${name}`}
-        className="group relative block w-full max-w-[1400px] mx-auto aspect-[16/10] md:aspect-[21/9] overflow-hidden border border-white/5 hover:border-[var(--gold)] transition-colors duration-500"
-      >
+    <section className="relative min-h-screen w-full overflow-hidden flex items-end reveal">
+      <div className="absolute inset-0">
         <img
           src={image}
           alt={name}
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-contain bg-black transition-transform duration-700 group-hover:scale-[1.02]"
+          className="w-full h-full object-cover scale-105"
         />
+        <div
+          className={`absolute inset-0 ${
+            reverse ? "bg-gradient-to-l" : "bg-gradient-to-r"
+          } from-black/90 via-black/40 to-transparent`}
+        />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black to-transparent" />
+      </div>
 
-        {/* sutil gradiente apenas embaixo para legibilidade do CTA, sem cobrir o logo */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        <span className="absolute bottom-5 right-5 glass inline-flex items-center gap-2 px-5 py-2.5 text-[10px] tracking-[0.3em] uppercase text-white opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
-          Ver Coleção
-          <span className="text-[var(--gold)]">→</span>
-        </span>
-      </Link>
+      <div
+        className={`relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-16 py-20 flex ${
+          reverse ? "justify-end" : "justify-start"
+        }`}
+      >
+        <Link
+          to="/marca/$slug"
+          params={{ slug: brandSlug }}
+          aria-label={`Ver roupas da marca ${name}`}
+          className="btn-magnetic group inline-flex items-center gap-4 bg-[var(--gold)] text-black px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-[var(--gold-bright)] transition-colors"
+        >
+          Ver Roupas
+          <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </Link>
+      </div>
     </section>
   );
 }
