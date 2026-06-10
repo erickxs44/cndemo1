@@ -1,12 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
-import { BRANDS } from "@/lib/store-data";
-import brandLacoste from "@/assets/brand-lacoste.jpg";
-import brandArmani from "@/assets/brand-armani.jpg";
-import brandReserva from "@/assets/brand-reserva.jpg";
-import brandAramis from "@/assets/brand-aramis.jpg";
+import { BRANDS, BRAND_IMAGES } from "@/lib/store-data";
 
-const IMG: Record<string,string> = { lacoste:brandLacoste, armani:brandArmani, reserva:brandReserva, aramis:brandAramis };
 
 export const Route = createFileRoute("/marcas")({
   head: () => ({ meta: [{ title: "Marcas — CN STORE" }, { name: "description", content: "Conheça as marcas premium parceiras da CN STORE." }] }),
