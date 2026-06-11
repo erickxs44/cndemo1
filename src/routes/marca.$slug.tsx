@@ -38,8 +38,6 @@ function BrandPage() {
           <div className="animate-fade-up">
             <p className="text-[10px] tracking-[0.5em] uppercase text-[var(--gold)] mb-4">Marca Parceira</p>
             <h1 className="font-display text-7xl md:text-9xl text-white">{brand.name}</h1>
-            <p className="font-display italic text-xl text-white/70 mt-4">"{brand.tagline}"</p>
-            <p className="mt-6 max-w-xl text-white/60 leading-relaxed">{brand.description}</p>
           </div>
         </div>
       </section>
