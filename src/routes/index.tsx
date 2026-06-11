@@ -2,10 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { BrandSection } from "@/components/site/BrandSection";
+import { HeroSlider } from "@/components/site/HeroSlider";
 import { ProductCard } from "@/components/site/ProductCard";
 import { QuickView } from "@/components/site/QuickView";
 import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES, type Product } from "@/lib/store-data";
-import heroBg from "@/assets/hero-bg.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,65 +24,7 @@ function Index() {
 
   return (
     <Layout>
-      {/* HERO */}
-      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0">
-          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
-        </div>
-
-        <div className="relative z-10 text-center px-6 max-w-6xl mx-auto animate-fade-up" style={{animationDelay:"0.1s"}}>
-          <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-[var(--gold)] mb-8">
-            Coleção 2026
-          </p>
-          <h1 className="font-display font-bold leading-[0.85]">
-            <span className="block text-[var(--gold)] text-7xl md:text-9xl lg:text-[12rem] tracking-tight">CN STORE</span>
-            <span className="block text-white text-2xl md:text-4xl lg:text-5xl tracking-widest mt-6 max-w-3xl mx-auto uppercase">
-              O Essencial Premium <br className="hidden md:block" />Para o Seu Estilo
-            </span>
-          </h1>
-
-          <p className="mt-8 text-sm md:text-base text-white/60 max-w-xl mx-auto tracking-wide">
-            Multimarcas de alto padrão. Curadoria das peças que definem o homem contemporâneo.
-          </p>
-
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
-            <Link
-              to="/categoria/$slug"
-              params={{ slug: "lancamentos" }}
-              className="btn-magnetic inline-flex items-center gap-4 bg-[var(--gold)] text-black px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-[var(--gold-bright)]"
-            >
-              Conhecer Lançamentos
-              <span>→</span>
-            </Link>
-            <Link
-              to="/marcas"
-              className="inline-flex items-center gap-4 bg-black text-white border border-white/20 px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-colors"
-            >
-              Ver as Marcas
-            </Link>
-          </div>
-
-          <div className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto text-white/50">
-            <div className="text-center">
-              <p className="font-display text-3xl text-[var(--gold)]">+50</p>
-              <p className="text-[10px] tracking-[0.3em] uppercase mt-2">Marcas</p>
-            </div>
-            <div className="text-center">
-              <p className="font-display text-3xl text-[var(--gold)]">12k</p>
-              <p className="text-[10px] tracking-[0.3em] uppercase mt-2">Clientes</p>
-            </div>
-            <div className="text-center">
-              <p className="font-display text-3xl text-[var(--gold)]">100%</p>
-              <p className="text-[10px] tracking-[0.3em] uppercase mt-2">Original</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-[10px] tracking-[0.4em] uppercase animate-fade-in" style={{animationDelay:"1.2s"}}>
-          Role para descobrir ↓
-        </div>
-      </section>
+      <HeroSlider />
 
 
       {/* MARQUEE */}
