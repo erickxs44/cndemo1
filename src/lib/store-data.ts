@@ -13,6 +13,7 @@ import bLacoste from "@/assets/brands/lacoste.jpg";
 import bBrooks from "@/assets/brands/brooksfield.jpg";
 import bPrada from "@/assets/brands/prada.jpg";
 import bAdidas from "@/assets/brands/adidas.jpg";
+import bDiesel from "@/assets/brands/diesel.jpg";
 
 export const BRAND_IMAGES: Record<string, string> = {
   "ralph-lauren": bRalph,
@@ -24,7 +25,9 @@ export const BRAND_IMAGES: Record<string, string> = {
   "brooksfield": bBrooks,
   "prada": bPrada,
   "adidas": bAdidas,
+  "diesel": bDiesel,
 };
+
 
 
 export type Product = {
@@ -60,6 +63,8 @@ export const BRANDS = [
   { slug: "brooksfield", name: "Brooksfield", tagline: "Refined Menswear", description: "Tradição em alfaiataria brasileira. Peças sob medida para o cavalheiro contemporâneo." },
   { slug: "prada", name: "Prada", tagline: "Made in Milano", description: "A vanguarda italiana do luxo. Design intelectual, materiais excepcionais, presença absoluta." },
   { slug: "adidas", name: "Adidas Originals", tagline: "Impossible is Nothing", description: "Streetwear de herança esportiva. Onde performance encontra cultura urbana premium." },
+  { slug: "diesel", name: "Diesel", tagline: "For Successful Living", description: "Atitude italiana e denim icônico. Para quem vive sem pedir permissão." },
+
 ];
 
 const baseSizes = ["P", "M", "G", "GG"];

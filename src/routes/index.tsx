@@ -26,34 +26,44 @@ function Index() {
     <Layout>
       {/* HERO */}
       <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0 opacity-40">
-          <img src={heroBg} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black" />
+        <div className="absolute inset-0">
+          <img src={heroBg} alt="" className="w-full h-full object-cover opacity-60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black" />
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-          <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-[var(--gold)] mb-8 animate-fade-up" style={{animationDelay:"0.1s"}}>
-            Estabelecida · Curadoria Premium
+        <div className="relative z-10 text-center px-6 max-w-6xl mx-auto animate-fade-up" style={{animationDelay:"0.1s"}}>
+          <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-[var(--gold)] mb-8">
+            Coleção 2026
           </p>
-          <h1 className="font-display font-bold leading-[0.85] animate-fade-up" style={{animationDelay:"0.3s"}}>
-            <span className="block text-[var(--gold)] text-7xl md:text-9xl lg:text-[12rem] tracking-tighter">CN STORE</span>
-            <span className="block text-white text-2xl md:text-4xl lg:text-5xl tracking-tight mt-6 max-w-3xl mx-auto uppercase">
-              O Padrão Supremo do <br className="hidden md:block" />Vestuário Masculino
+          <h1 className="font-display font-bold leading-[0.85]">
+            <span className="block text-[var(--gold)] text-7xl md:text-9xl lg:text-[12rem] tracking-tight">CN STORE</span>
+            <span className="block text-white text-2xl md:text-4xl lg:text-5xl tracking-widest mt-6 max-w-3xl mx-auto uppercase">
+              O Essencial Premium <br className="hidden md:block" />Para o Seu Estilo
             </span>
           </h1>
 
-          <div className="mt-12 animate-fade-up" style={{animationDelay:"0.6s"}}>
+          <p className="mt-8 text-sm md:text-base text-white/60 max-w-xl mx-auto tracking-wide">
+            Multimarcas de alto padrão. Curadoria das peças que definem o homem contemporâneo.
+          </p>
+
+          <div className="mt-12 flex flex-col sm:flex-row gap-4 items-center justify-center">
             <Link
               to="/categoria/$slug"
               params={{ slug: "lancamentos" }}
               className="btn-magnetic inline-flex items-center gap-4 bg-[var(--gold)] text-black px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-[var(--gold-bright)]"
             >
-              Explorar o Catálogo
+              Conhecer Lançamentos
               <span>→</span>
+            </Link>
+            <Link
+              to="/marcas"
+              className="inline-flex items-center gap-4 bg-black text-white border border-white/20 px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-colors"
+            >
+              Ver as Marcas
             </Link>
           </div>
 
-          <div className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto text-white/50 animate-fade-up" style={{animationDelay:"0.9s"}}>
+          <div className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto text-white/50">
             <div className="text-center">
               <p className="font-display text-3xl text-[var(--gold)]">+50</p>
               <p className="text-[10px] tracking-[0.3em] uppercase mt-2">Marcas</p>
@@ -73,6 +83,7 @@ function Index() {
           Role para descobrir ↓
         </div>
       </section>
+
 
       {/* MARQUEE */}
       <section className="bg-[var(--gold)] text-black py-5 overflow-hidden border-y border-black/10">
