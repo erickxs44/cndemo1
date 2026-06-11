@@ -35,23 +35,15 @@ export function BrandSection({ brandSlug, name, image, reverse }: Props) {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen w-full overflow-hidden flex items-end"
+      className="relative block w-full overflow-hidden align-top m-0 p-0"
     >
-      <div className="absolute inset-0 bg-black">
-        {/* Blurred backdrop fills space without cropping logos */}
-        <img
-          src={image}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-40"
-        />
+      <div className="relative w-full">
         <img
           src={image}
           alt={name}
           loading="lazy"
-          className={`relative w-full h-full object-contain transition-all duration-[1600ms] ease-out ${
-            visible ? "scale-100 opacity-100 blur-0" : "scale-110 opacity-0 blur-md"
+          className={`block w-full h-auto object-cover transition-all duration-[1600ms] ease-out ${
+            visible ? "scale-100 opacity-100 blur-0" : "scale-105 opacity-0 blur-md"
           }`}
         />
         <div
@@ -59,12 +51,11 @@ export function BrandSection({ brandSlug, name, image, reverse }: Props) {
             reverse ? "bg-gradient-to-l" : "bg-gradient-to-r"
           } from-black/70 via-black/10 to-transparent`}
         />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/80 to-transparent" />
       </div>
 
-
       <div
-        className={`relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-16 py-20 flex ${
+        className={`absolute inset-x-0 bottom-0 z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-16 pb-10 lg:pb-16 flex ${
           reverse ? "justify-end" : "justify-start"
         }`}
       >
