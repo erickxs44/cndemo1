@@ -64,14 +64,14 @@ export function BrandSection({ brandSlug, name, image, reverse }: Props) {
           params={{ slug: brandSlug }}
           aria-label={`Ver roupas da marca ${name}`}
           className={`group relative inline-flex items-center gap-4 px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase text-white
-            backdrop-blur-xl bg-white/10 border border-white/25 shadow-[0_8px_32px_rgba(0,0,0,0.4)]
-            hover:bg-[var(--gold)]/90 hover:text-black hover:border-[var(--gold)] hover:shadow-[0_12px_40px_rgba(212,175,55,0.45)]
+            backdrop-blur-md bg-white/5 border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.3)]
+            hover:bg-[var(--gold)]/80 hover:text-black hover:border-[var(--gold)] hover:shadow-[0_12px_40px_rgba(212,175,55,0.45)]
             transition-all duration-500 ease-out overflow-hidden
             ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
           style={{ transitionDelay: visible ? "600ms" : "0ms" }}
         >
-          <span className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent pointer-events-none" />
-          <span className="relative">Ver Roupas</span>
+          <span className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none" />
+          <span className="relative">Ver Coleção</span>
           <span className="relative transition-transform duration-300 group-hover:translate-x-1">→</span>
         </Link>
       </div>
