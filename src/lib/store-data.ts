@@ -13,6 +13,7 @@ import bLacoste from "@/assets/brands/lacoste.jpg";
 import bBrooks from "@/assets/brands/brooksfield.jpg";
 import bPrada from "@/assets/brands/prada.jpg";
 import bAdidas from "@/assets/brands/adidas.jpg";
+import bDiesel from "@/assets/brands/diesel.jpg";
 
 export const BRAND_IMAGES: Record<string, string> = {
   "ralph-lauren": bRalph,
@@ -24,7 +25,9 @@ export const BRAND_IMAGES: Record<string, string> = {
   "brooksfield": bBrooks,
   "prada": bPrada,
   "adidas": bAdidas,
+  "diesel": bDiesel,
 };
+
 
 
 export type Product = {
