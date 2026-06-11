@@ -37,22 +37,31 @@ export function BrandSection({ brandSlug, name, image, reverse }: Props) {
       ref={ref}
       className="relative min-h-screen w-full overflow-hidden flex items-end"
     >
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-black">
+        {/* Blurred backdrop fills space without cropping logos */}
+        <img
+          src={image}
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-40"
+        />
         <img
           src={image}
           alt={name}
           loading="lazy"
-          className={`w-full h-full object-cover transition-all duration-[1600ms] ease-out ${
-            visible ? "scale-105 opacity-100 blur-0" : "scale-125 opacity-0 blur-md"
+          className={`relative w-full h-full object-contain transition-all duration-[1600ms] ease-out ${
+            visible ? "scale-100 opacity-100 blur-0" : "scale-110 opacity-0 blur-md"
           }`}
         />
         <div
           className={`absolute inset-0 ${
             reverse ? "bg-gradient-to-l" : "bg-gradient-to-r"
-          } from-black/90 via-black/40 to-transparent`}
+          } from-black/70 via-black/10 to-transparent`}
         />
         <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black to-transparent" />
       </div>
+
 
       <div
         className={`relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-16 py-20 flex ${
