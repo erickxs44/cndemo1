@@ -8,9 +8,10 @@ import productShirt from "@/assets/product-shirt-1.jpg";
 
 type Slide = {
   image: string;
-  layout: "editorial" | "centered";
+  layout: "editorial" | "centered" | "image-only";
   content: ReactNode;
 };
+
 
 const SLIDES: Slide[] = [
   {
