@@ -122,14 +122,34 @@ export function HeroSlider() {
           aria-hidden={i !== active}
         >
           {s.layout === "image-only" ? (
-            <img
-              src={s.image}
-              alt=""
-              className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-out ${
-                i === active ? "scale-105" : "scale-100"
-              }`}
-            />
+            <div className="relative w-full h-full">
+              <img
+                src={s.image}
+                alt="CN Store — Supremo do Vestuário"
+                className={`w-full h-full object-cover object-center transition-transform duration-[6000ms] ease-out ${
+                  i === active ? "scale-105" : "scale-100"
+                }`}
+              />
+              {/* Live clickable hotspots over the printed buttons in the image */}
+              <Link
+                to="/categoria/$slug"
+                params={{ slug: "lancamentos" }}
+                aria-label="Conhecer Lançamentos"
+                className="group absolute left-[2%] top-[68%] w-[32%] h-[6.5%] rounded-md ring-0 hover:ring-2 hover:ring-[var(--gold)] transition-all duration-300 hover:scale-[1.04] active:scale-95"
+              >
+                <span className="absolute inset-0 rounded-md bg-[var(--gold)]/0 group-hover:bg-[var(--gold)]/20 transition-colors duration-300" />
+                <span className="absolute inset-0 rounded-md shadow-[0_0_0_0_rgba(212,168,76,0)] group-hover:shadow-[0_0_30px_4px_rgba(212,168,76,0.55)] transition-shadow duration-300" />
+              </Link>
+              <Link
+                to="/marcas"
+                aria-label="Ver as Marcas"
+                className="group absolute right-[2.5%] top-[70.5%] w-[14%] h-[4.5%] rounded-md hover:ring-2 hover:ring-[var(--gold)] transition-all duration-300 hover:scale-[1.06] active:scale-95"
+              >
+                <span className="absolute inset-0 rounded-md bg-[var(--gold)]/0 group-hover:bg-[var(--gold)]/20 transition-colors duration-300" />
+              </Link>
+            </div>
           ) : s.layout === "editorial" ? (
+
 
             <>
               {/* dark gradient base */}
