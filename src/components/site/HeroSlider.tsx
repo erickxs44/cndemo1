@@ -108,11 +108,12 @@ export function HeroSlider() {
 
   return (
     <section
-      className="relative min-h-screen w-full overflow-hidden bg-black select-none"
+      className="relative w-full overflow-hidden bg-black select-none aspect-[1083/982] lg:aspect-auto lg:min-h-screen"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
       aria-roledescription="carousel"
     >
+
       {SLIDES.map((s, i) => (
         <div
           key={i}
