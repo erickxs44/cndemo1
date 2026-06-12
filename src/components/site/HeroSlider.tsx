@@ -121,7 +121,16 @@ export function HeroSlider() {
           }`}
           aria-hidden={i !== active}
         >
-          {s.layout === "editorial" ? (
+          {s.layout === "image-only" ? (
+            <img
+              src={s.image}
+              alt=""
+              className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-out ${
+                i === active ? "scale-105" : "scale-100"
+              }`}
+            />
+          ) : s.layout === "editorial" ? (
+
             <>
               {/* dark gradient base */}
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#1a1408_0%,#000_70%)]" />
