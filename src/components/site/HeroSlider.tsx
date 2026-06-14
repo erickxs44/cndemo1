@@ -13,52 +13,50 @@ type Slide = {
 };
 
 const EditorialSlide = () => (
-  <div className="relative w-full h-full">
+  <div className="relative w-full h-full bg-[#0a0805]">
     {/* Backdrop gradient */}
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,#2a1f10_0%,#0a0805_55%,#000_100%)]" />
-    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_55%,#1a1208_0%,#070503_60%,#000_100%)]" />
 
-    {/* Giant brand watermark */}
-    <div className="pointer-events-none absolute inset-x-0 top-2 lg:top-6 flex justify-center overflow-hidden">
-      <h2 className="font-display font-black text-white/[0.07] lg:text-white/10 tracking-tighter leading-none whitespace-nowrap text-[24vw] lg:text-[18vw] select-none">
-        +CN<span className="text-[var(--gold)]/30">✱</span>STORE
-      </h2>
-    </div>
-
-    {/* Model — centered, behind text on mobile */}
-    <div className="absolute inset-0 flex items-end lg:items-center justify-center">
+    {/* Model */}
+    <div className="absolute inset-0 flex items-end justify-center lg:justify-end lg:pr-[10%]">
       <img
         src={heroModel}
         alt="CN Store — modelo vestindo camisa premium"
-        className="h-[88%] lg:h-[92%] w-auto object-contain object-bottom drop-shadow-[0_0_60px_rgba(212,168,76,0.25)]"
+        className="h-[78%] sm:h-[82%] lg:h-[95%] w-auto object-contain object-bottom drop-shadow-[0_0_80px_rgba(212,168,76,0.18)]"
         loading="eager"
       />
-      {/* Rim light glow */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_55%_45%,rgba(212,168,76,0.18)_0%,transparent_45%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_50%,rgba(212,168,76,0.14)_0%,transparent_50%)]" />
     </div>
 
     {/* Mobile readability scrim */}
-    <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-black/85" />
+    <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/85" />
+
+    {/* Giant brand wordmark — solid white, top */}
+    <div className="pointer-events-none absolute inset-x-0 top-2 sm:top-3 lg:top-6 z-20 flex justify-center overflow-hidden px-2">
+      <h2 className="font-display font-black text-white tracking-[-0.04em] leading-none whitespace-nowrap text-[19vw] lg:text-[15vw] select-none drop-shadow-[0_6px_30px_rgba(0,0,0,0.6)]">
+        +CN<span className="text-[var(--gold)]">✱</span>STORE
+      </h2>
+    </div>
 
     {/* Content grid */}
-    <div className="relative z-10 h-full max-w-[1600px] mx-auto px-6 lg:px-12 py-20 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div className="relative z-30 h-full max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 pt-[22vw] lg:pt-[14vw] pb-24 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end lg:items-center">
       {/* Left — copy */}
       <div className="lg:col-span-5 text-left">
-        <p className="text-[10px] md:text-xs tracking-[0.5em] uppercase text-[var(--gold)] mb-5 font-semibold">
-          CN Store
+        <p className="text-[11px] md:text-xs tracking-[0.4em] uppercase text-[var(--gold)] mb-3 font-bold">
+          CN STORE
         </p>
         <h1 className="font-display font-black text-white leading-[0.88] tracking-tight">
-          <span className="block text-5xl md:text-7xl lg:text-[5.5rem]">SUPREMO</span>
-          <span className="block text-5xl md:text-7xl lg:text-[5.5rem]">DO <span className="text-[var(--gold)]">VESTUÁRIO</span></span>
+          <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem]">SUPREMO</span>
+          <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem]">DO VESTUÁRIO</span>
         </h1>
-        <p className="mt-6 max-w-md text-sm md:text-base text-white/75 leading-relaxed font-light">
+        <p className="mt-5 max-w-md text-xs sm:text-sm md:text-base text-white/75 leading-relaxed font-light">
           Multimarca casual premium, sofisticado standard-fit com o refinamento que você merece.
         </p>
-        <div className="mt-8">
+        <div className="mt-6">
           <Link
             to="/categoria/$slug"
             params={{ slug: "lancamentos" }}
-            className="btn-magnetic group inline-flex items-center gap-3 bg-[var(--gold)] text-black px-8 py-4 text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase shadow-[0_10px_40px_-10px_rgba(212,168,76,0.6)] hover:bg-[var(--gold-bright)] hover:shadow-[0_15px_50px_-10px_rgba(212,168,76,0.85)] hover:-translate-y-0.5 transition-all duration-300"
+            className="btn-magnetic group inline-flex items-center gap-3 bg-[var(--gold)] text-black px-6 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase rounded-md shadow-[0_10px_40px_-10px_rgba(212,168,76,0.6)] hover:bg-[var(--gold-bright)] hover:shadow-[0_15px_50px_-10px_rgba(212,168,76,0.85)] hover:-translate-y-0.5 transition-all duration-300"
           >
             Conhecer Lançamentos
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -66,17 +64,15 @@ const EditorialSlide = () => (
         </div>
       </div>
 
-      {/* Spacer for model */}
       <div className="hidden lg:block lg:col-span-4" />
 
-      {/* Right — floating product card */}
       <div className="lg:col-span-3 flex lg:justify-end">
-        <div className="group relative w-full max-w-[260px] mx-auto lg:mx-0 bg-white/[0.04] backdrop-blur-xl border border-white/15 rounded-2xl p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.7)] animate-[float_5s_ease-in-out_infinite] hover:border-[var(--gold)]/60 transition-colors duration-500">
-          <div className="flex items-center justify-between mb-3">
+        <div className="group relative w-full max-w-[220px] sm:max-w-[240px] ml-auto lg:mx-0 bg-black/60 backdrop-blur-xl border border-white/15 rounded-2xl p-3 sm:p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] animate-[float_5s_ease-in-out_infinite] hover:border-[var(--gold)]/60 transition-colors duration-500">
+          <div className="flex items-center justify-between mb-2.5">
             <span className="text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] font-bold">New Arrival</span>
             <span className="h-2 w-2 rounded-full bg-[var(--gold)] animate-pulse" />
           </div>
-          <div className="aspect-square overflow-hidden rounded-lg bg-[#1a1410] mb-4">
+          <div className="aspect-square overflow-hidden rounded-lg bg-[#1a1410] mb-3">
             <img
               src={productShirt}
               alt="Camisa Premium CN Multimarca"
@@ -84,12 +80,12 @@ const EditorialSlide = () => (
               loading="lazy"
             />
           </div>
-          <p className="text-[10px] tracking-[0.25em] uppercase text-white/50 mb-1">Premium CN Multimarca</p>
-          <p className="text-xs text-white/80 mb-2 leading-snug">Editorial Creations, Detailed Finishes</p>
-          <p className="font-display text-2xl text-white font-bold mb-4">R$ 79,90</p>
+          <p className="text-[10px] tracking-[0.2em] uppercase text-white/80 font-semibold mb-1">Premium CN Multimarca</p>
+          <p className="text-[10px] text-white/60 mb-1.5 leading-snug">Editorial Creations, Detailed Finishes</p>
+          <p className="font-display text-lg sm:text-xl text-white font-bold mb-3">R$ 79,90</p>
           <Link
             to="/marcas"
-            className="block w-full text-center bg-[var(--gold)]/95 text-black py-2.5 text-[10px] font-bold tracking-[0.3em] uppercase rounded-md hover:bg-[var(--gold-bright)] transition-colors"
+            className="block w-full text-center bg-[var(--gold)] text-black py-2 text-[10px] font-bold tracking-[0.25em] uppercase rounded-md hover:bg-[var(--gold-bright)] transition-colors"
           >
             Ver as Marcas
           </Link>
