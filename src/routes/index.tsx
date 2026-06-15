@@ -110,7 +110,7 @@ function Index() {
         </div>
       </section>
 
-      <QuickView product={quick} onClose={() => setQuick(null)} />
+
     </Layout>
   );
 }
