@@ -22,7 +22,7 @@ export const Route = createFileRoute("/categoria/$slug")({
 
 function CategoryPage() {
   const { cat } = Route.useLoaderData();
-  const [quick, setQuick] = useState<Product | null>(null);
+  
   const products = cat.slug === "lancamentos"
     ? PRODUCTS.filter(p => p.isNew)
     : PRODUCTS.filter(p => p.category === cat.slug);
