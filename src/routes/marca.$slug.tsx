@@ -49,12 +49,12 @@ function BrandPage() {
           <p className="text-center text-white/50 py-32">Em breve, peças exclusivas desta marca.</p>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-10">
-            {products.map(p => <ProductCard key={p.id} product={p} onClick={() => setQuick(p)} />)}
+            {products.map(p => <ProductCard key={p.id} product={p} />)}
           </div>
         )}
       </section>
 
-      <QuickView product={quick} onClose={() => setQuick(null)} />
+
     </Layout>
   );
 }
