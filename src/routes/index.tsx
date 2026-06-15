@@ -72,6 +72,9 @@ function Index() {
         />
       ))}
 
+      <BermudasShowcase />
+
+
       {/* CATEGORIES STRIP */}
       <section className="py-32 px-6 lg:px-10 max-w-[1600px] mx-auto reveal">
         <p className="text-[10px] tracking-[0.5em] uppercase text-[var(--gold)] mb-4 text-center">Universo CN</p>
