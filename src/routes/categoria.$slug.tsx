@@ -1,9 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { ProductCard } from "@/components/site/ProductCard";
-import { QuickView } from "@/components/site/QuickView";
-import { CATEGORIES, PRODUCTS, type Product } from "@/lib/store-data";
+import { CATEGORIES, PRODUCTS } from "@/lib/store-data";
 
 export const Route = createFileRoute("/categoria/$slug")({
   loader: ({ params }) => {
