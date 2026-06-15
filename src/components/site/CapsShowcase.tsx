@@ -107,11 +107,14 @@ export function CapsShowcase() {
         {/* GRID DE BONÉS */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
           {caps.map((c, i) => (
-            <article
-              key={i}
-              className="group relative cursor-pointer reveal bg-[#0a0a0a] border border-white/5 hover:border-[var(--gold)]/50 transition-colors duration-500"
+            <Link
+              key={c.id}
+              to="/produto/$id"
+              params={{ id: c.id }}
+              className="group relative cursor-pointer reveal bg-[#0a0a0a] border border-white/5 hover:border-[var(--gold)]/50 transition-colors duration-500 block"
               style={{ animationDelay: `${i * 80}ms` }}
             >
+              <article>
               {c.tag && (
                 <span className="absolute top-3 left-3 z-10 bg-[var(--gold)] text-black text-[9px] tracking-[0.25em] font-bold uppercase px-2 py-1">
                   {c.tag}
@@ -133,12 +136,12 @@ export function CapsShowcase() {
                       "radial-gradient(400px 200px at 50% 100%, rgba(212,168,76,0.25), transparent 70%)",
                   }}
                 />
-                <button
-                  aria-label={`Comprar ${c.name}`}
-                  className="absolute bottom-3 right-3 grid place-items-center w-11 h-11 bg-[var(--gold)] text-black translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:scale-110"
+                <span
+                  aria-hidden
+                  className="absolute bottom-3 right-3 grid place-items-center w-11 h-11 bg-[var(--gold)] text-black translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500"
                 >
                   <ShoppingBag className="w-4 h-4" />
-                </button>
+                </span>
               </div>
 
               <div className="p-4 space-y-1.5">
@@ -154,7 +157,8 @@ export function CapsShowcase() {
                 </div>
                 <p className="text-[10px] text-white/40 pt-1">ou 3x sem juros</p>
               </div>
-            </article>
+              </article>
+            </Link>
           ))}
         </div>
 
