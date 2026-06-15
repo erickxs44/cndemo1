@@ -1,9 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { ProductCard } from "@/components/site/ProductCard";
-import { QuickView } from "@/components/site/QuickView";
-import { BRANDS, PRODUCTS, BRAND_IMAGES, type Product } from "@/lib/store-data";
+import { BRANDS, PRODUCTS, BRAND_IMAGES } from "@/lib/store-data";
 
 
 export const Route = createFileRoute("/marca/$slug")({
