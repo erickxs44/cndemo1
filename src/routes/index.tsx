@@ -19,7 +19,6 @@ export const Route = createFileRoute("/")({
 
 
 function Index() {
-  const [quick, setQuick] = useState<Product | null>(null);
   const featured = PRODUCTS.slice(0, 6);
 
   return (
