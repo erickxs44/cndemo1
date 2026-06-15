@@ -1,13 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { BrandSection } from "@/components/site/BrandSection";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { BermudasShowcase } from "@/components/site/BermudasShowcase";
 import { CapsShowcase } from "@/components/site/CapsShowcase";
 import { ProductCard } from "@/components/site/ProductCard";
-import { QuickView } from "@/components/site/QuickView";
-import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES, type Product } from "@/lib/store-data";
+import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES } from "@/lib/store-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
