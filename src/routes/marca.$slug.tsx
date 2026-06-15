@@ -23,7 +23,7 @@ export const Route = createFileRoute("/marca/$slug")({
 
 function BrandPage() {
   const { brand } = Route.useLoaderData();
-  const [quick, setQuick] = useState<Product | null>(null);
+  
   const products = PRODUCTS.filter(p => p.brand.toLowerCase().includes(brand.name.toLowerCase().split(" ")[0].toLowerCase()));
   const image = BRAND_IMAGES[brand.slug];
 
