@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { BrandSection } from "@/components/site/BrandSection";
 import { HeroSlider } from "@/components/site/HeroSlider";
+import { BermudasShowcase } from "@/components/site/BermudasShowcase";
 import { ProductCard } from "@/components/site/ProductCard";
 import { QuickView } from "@/components/site/QuickView";
 import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES, type Product } from "@/lib/store-data";
@@ -70,6 +71,9 @@ function Index() {
           reverse={i % 2 === 1}
         />
       ))}
+
+      <BermudasShowcase />
+
 
       {/* CATEGORIES STRIP */}
       <section className="py-32 px-6 lg:px-10 max-w-[1600px] mx-auto reveal">
