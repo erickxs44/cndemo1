@@ -57,6 +57,7 @@ export const CATEGORIES = [
   { slug: "camisas", name: "Camisas" },
   { slug: "bermudas", name: "Bermudas" },
   { slug: "calcas", name: "Calças" },
+  { slug: "bones", name: "Bonés" },
   { slug: "lancamentos", name: "Lançamentos" },
 ];
 
