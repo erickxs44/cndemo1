@@ -52,7 +52,7 @@ function Index() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-10">
           {featured.map(p => (
-            <ProductCard key={p.id} product={p} onClick={() => setQuick(p)} />
+            <ProductCard key={p.id} product={p} />
           ))}
         </div>
       </section>
