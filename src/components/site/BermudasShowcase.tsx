@@ -9,10 +9,10 @@ import promoNew from "@/assets/promo-newarrivals.jpg";
 import promoSummer from "@/assets/promo-summer.jpg";
 
 const bermudas = [
-  { img: bermuda1, name: "Bermuda Chino Premium CN", price: "119,90", color: "Marinho" },
-  { img: bermuda2, name: "Bermuda Chino Sahara", price: "129,90", color: "Cáqui" },
-  { img: bermuda3, name: "Bermuda Linho Areia", price: "149,90", color: "Areia" },
-  { img: bermuda4, name: "Bermuda Tech Graphite", price: "139,90", color: "Grafite" },
+  { id: "b1", img: bermuda1, name: "Bermuda Chino Premium CN", price: "119,90", color: "Marinho" },
+  { id: "b2", img: bermuda2, name: "Bermuda Chino Sahara", price: "129,90", color: "Cáqui" },
+  { id: "b3", img: bermuda3, name: "Bermuda Linho Areia", price: "149,90", color: "Areia" },
+  { id: "b4", img: bermuda4, name: "Bermuda Tech Graphite", price: "139,90", color: "Grafite" },
 ];
 
 export function BermudasShowcase() {
