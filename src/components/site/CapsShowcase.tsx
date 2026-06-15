@@ -7,10 +7,10 @@ import cap4 from "@/assets/cap-4.jpg";
 import capHero from "@/assets/cap-hero.jpg";
 
 const caps = [
-  { img: cap1, name: "Cap Black Patch CN", price: "89,90", oldPrice: "129,90", color: "Preto", tag: "Best Seller" },
-  { img: cap2, name: "Cap Desert Sand", price: "94,90", color: "Caramelo", tag: "Novo" },
-  { img: cap3, name: "Cap Off White Minimal", price: "84,90", color: "Off-White" },
-  { img: cap4, name: "Cap Royal Crest Gold", price: "119,90", oldPrice: "149,90", color: "Marinho", tag: "Premium" },
+  { id: "c1", img: cap1, name: "Cap Black Patch CN", price: "89,90", oldPrice: "129,90", color: "Preto", tag: "Best Seller" },
+  { id: "c2", img: cap2, name: "Cap Desert Sand", price: "94,90", color: "Caramelo", tag: "Novo" },
+  { id: "c3", img: cap3, name: "Cap Off White Minimal", price: "84,90", color: "Off-White" },
+  { id: "c4", img: cap4, name: "Cap Royal Crest Gold", price: "119,90", oldPrice: "149,90", color: "Marinho", tag: "Premium" },
 ];
 
 export function CapsShowcase() {
