@@ -3,6 +3,13 @@ import polo2 from "@/assets/product-polo-2.jpg";
 import shirt1 from "@/assets/product-shirt-1.jpg";
 import shirt2 from "@/assets/product-shirt-2.jpg";
 import bermuda1 from "@/assets/product-bermuda-1.jpg";
+import bermuda2 from "@/assets/product-bermuda-2.jpg";
+import bermuda3 from "@/assets/product-bermuda-3.jpg";
+import bermuda4 from "@/assets/product-bermuda-4.jpg";
+import cap1 from "@/assets/cap-1.jpg";
+import cap2 from "@/assets/cap-2.jpg";
+import cap3 from "@/assets/cap-3.jpg";
+import cap4 from "@/assets/cap-4.jpg";
 import pants1 from "@/assets/product-pants-1.jpg";
 import bRalph from "@/assets/brands/ralph-lauren.jpg";
 import bHugo from "@/assets/brands/hugo-boss.jpg";
@@ -50,6 +57,7 @@ export const CATEGORIES = [
   { slug: "camisas", name: "Camisas" },
   { slug: "bermudas", name: "Bermudas" },
   { slug: "calcas", name: "Calças" },
+  { slug: "bones", name: "Bonés" },
   { slug: "lancamentos", name: "Lançamentos" },
 ];
 
@@ -76,6 +84,14 @@ export const PRODUCTS: Product[] = [
   { id: "4", variantId: "10004", name: "Calça Alfaiataria Slim", brand: "Hugo Boss", category: "calcas", price: 899, image: pants1, colors: [{name:"Preto",hex:"#000"},{name:"Marinho",hex:"#0a1530"}], sizes: ["38","40","42","44","46","48"], description: "Lã italiana fria com toque sedoso. Corte slim moderno com bainha viva.", isNew: true },
   { id: "5", variantId: "10005", name: "Polo Manga Curta Pima", brand: "Ralph Lauren", category: "polos", price: 389, image: polo2, colors: [{name:"Marinho",hex:"#0a1530"},{name:"Bordô",hex:"#5a0e1e"}], sizes: baseSizes, description: "Algodão Pima de fibra longa. Toque macio e durabilidade superior." },
   { id: "6", variantId: "10006", name: "Camisa Oxford Tailored", brand: "Calvin Klein", category: "camisas", price: 549, oldPrice: 699, image: shirt2, colors: [{name:"Grafite",hex:"#2a2a2e"},{name:"Preto",hex:"#000"}], sizes: baseSizes, description: "Tecido oxford encorpado, corte tailored. Versatilidade entre o casual e o social.", isNew: true },
+  { id: "b1", variantId: "20001", name: "Bermuda Chino Premium CN", brand: "CN Store", category: "bermudas", price: 119.90, image: bermuda1, colors: [{name:"Marinho",hex:"#1a2540"},{name:"Preto",hex:"#000"}], sizes: ["38","40","42","44","46"], description: "Bermuda chino em sarja premium com leve elastano. Corte reto, cintura confortável e acabamento impecável." },
+  { id: "b2", variantId: "20002", name: "Bermuda Chino Sahara", brand: "CN Store", category: "bermudas", price: 129.90, image: bermuda2, colors: [{name:"Cáqui",hex:"#c8a878"}], sizes: ["38","40","42","44","46"], description: "Tom cáqui versátil em sarja resistente. Ideal para o dia a dia com estilo." },
+  { id: "b3", variantId: "20003", name: "Bermuda Linho Areia", brand: "CN Store", category: "bermudas", price: 149.90, image: bermuda3, colors: [{name:"Areia",hex:"#d4c4a8"}], sizes: ["38","40","42","44","46"], description: "Linho leve e fresco para os dias quentes. Caimento fluido, conforto absoluto.", isNew: true },
+  { id: "b4", variantId: "20004", name: "Bermuda Tech Graphite", brand: "CN Store", category: "bermudas", price: 139.90, image: bermuda4, colors: [{name:"Grafite",hex:"#2a2a2e"}], sizes: ["38","40","42","44","46"], description: "Tecido técnico com toque sedoso, secagem rápida e resistência ao amassado." },
+  { id: "c1", variantId: "30001", name: "Cap Black Patch CN", brand: "CN Store", category: "bones", price: 89.90, oldPrice: 129.90, image: cap1, colors: [{name:"Preto",hex:"#000"}], sizes: ["Único"], description: "Boné dad hat em algodão pesado com patch bordado. Aba curva e fechamento ajustável." },
+  { id: "c2", variantId: "30002", name: "Cap Desert Sand", brand: "CN Store", category: "bones", price: 94.90, image: cap2, colors: [{name:"Caramelo",hex:"#a8794a"}], sizes: ["Único"], description: "Tom terroso atemporal em sarja encorpada. Coroa estruturada e snap traseiro.", isNew: true },
+  { id: "c3", variantId: "30003", name: "Cap Off White Minimal", brand: "CN Store", category: "bones", price: 84.90, image: cap3, colors: [{name:"Off-White",hex:"#f5f0e8"}], sizes: ["Único"], description: "Branco minimalista sem logo aparente. Para quem deixa o estilo falar." },
+  { id: "c4", variantId: "30004", name: "Cap Royal Crest Gold", brand: "CN Store", category: "bones", price: 119.90, oldPrice: 149.90, image: cap4, colors: [{name:"Marinho",hex:"#0a1530"}], sizes: ["Único"], description: "Bordado dourado em fio metálico sobre marinho profundo. Detalhe de luxo." },
 ];
 
 export const CHECKOUT_DOMAIN = "https://cnstore.lojavirtualnuvem.com.br";

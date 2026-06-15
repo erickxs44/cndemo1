@@ -1,9 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { ProductCard } from "@/components/site/ProductCard";
-import { QuickView } from "@/components/site/QuickView";
-import { BRANDS, PRODUCTS, BRAND_IMAGES, type Product } from "@/lib/store-data";
+import { BRANDS, PRODUCTS, BRAND_IMAGES } from "@/lib/store-data";
 
 
 export const Route = createFileRoute("/marca/$slug")({
@@ -25,7 +23,7 @@ export const Route = createFileRoute("/marca/$slug")({
 
 function BrandPage() {
   const { brand } = Route.useLoaderData();
-  const [quick, setQuick] = useState<Product | null>(null);
+  
   const products = PRODUCTS.filter(p => p.brand.toLowerCase().includes(brand.name.toLowerCase().split(" ")[0].toLowerCase()));
   const image = BRAND_IMAGES[brand.slug];
 
@@ -51,12 +49,12 @@ function BrandPage() {
           <p className="text-center text-white/50 py-32">Em breve, peças exclusivas desta marca.</p>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-10">
-            {products.map(p => <ProductCard key={p.id} product={p} onClick={() => setQuick(p)} />)}
+            {products.map(p => <ProductCard key={p.id} product={p} />)}
           </div>
         )}
       </section>
 
-      <QuickView product={quick} onClose={() => setQuick(null)} />
+
     </Layout>
   );
 }

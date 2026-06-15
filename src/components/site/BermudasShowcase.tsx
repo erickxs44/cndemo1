@@ -9,10 +9,10 @@ import promoNew from "@/assets/promo-newarrivals.jpg";
 import promoSummer from "@/assets/promo-summer.jpg";
 
 const bermudas = [
-  { img: bermuda1, name: "Bermuda Chino Premium CN", price: "119,90", color: "Marinho" },
-  { img: bermuda2, name: "Bermuda Chino Sahara", price: "129,90", color: "Cáqui" },
-  { img: bermuda3, name: "Bermuda Linho Areia", price: "149,90", color: "Areia" },
-  { img: bermuda4, name: "Bermuda Tech Graphite", price: "139,90", color: "Grafite" },
+  { id: "b1", img: bermuda1, name: "Bermuda Chino Premium CN", price: "119,90", color: "Marinho" },
+  { id: "b2", img: bermuda2, name: "Bermuda Chino Sahara", price: "129,90", color: "Cáqui" },
+  { id: "b3", img: bermuda3, name: "Bermuda Linho Areia", price: "149,90", color: "Areia" },
+  { id: "b4", img: bermuda4, name: "Bermuda Tech Graphite", price: "139,90", color: "Grafite" },
 ];
 
 export function BermudasShowcase() {
@@ -38,11 +38,14 @@ export function BermudasShowcase() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
           {bermudas.map((b, i) => (
-            <article
-              key={i}
-              className="group cursor-pointer reveal"
+            <Link
+              key={b.id}
+              to="/produto/$id"
+              params={{ id: b.id }}
+              className="group cursor-pointer reveal block"
               style={{ animationDelay: `${i * 80}ms` }}
             >
+              <article>
               <div className="relative overflow-hidden bg-[#0a0a0a] aspect-[4/5]">
                 <img
                   src={b.img}
@@ -51,12 +54,12 @@ export function BermudasShowcase() {
                   className="w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <button
-                  aria-label={`Comprar ${b.name}`}
-                  className="absolute bottom-4 right-4 grid place-items-center w-11 h-11 bg-[var(--gold)] text-black translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:scale-110"
+                <span
+                  aria-hidden
+                  className="absolute bottom-4 right-4 grid place-items-center w-11 h-11 bg-[var(--gold)] text-black translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500"
                 >
                   <ShoppingBag className="w-4 h-4" />
-                </button>
+                </span>
               </div>
               <div className="pt-4 space-y-1">
                 <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)]">{b.color}</p>
@@ -65,7 +68,8 @@ export function BermudasShowcase() {
                 </h3>
                 <p className="text-sm text-white">R$ {b.price}</p>
               </div>
-            </article>
+              </article>
+            </Link>
           ))}
         </div>
       </section>

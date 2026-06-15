@@ -1,13 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
 import { Layout } from "@/components/site/Layout";
 import { BrandSection } from "@/components/site/BrandSection";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { BermudasShowcase } from "@/components/site/BermudasShowcase";
 import { CapsShowcase } from "@/components/site/CapsShowcase";
 import { ProductCard } from "@/components/site/ProductCard";
-import { QuickView } from "@/components/site/QuickView";
-import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES, type Product } from "@/lib/store-data";
+import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES } from "@/lib/store-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,7 +19,6 @@ export const Route = createFileRoute("/")({
 
 
 function Index() {
-  const [quick, setQuick] = useState<Product | null>(null);
   const featured = PRODUCTS.slice(0, 6);
 
   return (
@@ -55,7 +52,7 @@ function Index() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 lg:gap-10">
           {featured.map(p => (
-            <ProductCard key={p.id} product={p} onClick={() => setQuick(p)} />
+            <ProductCard key={p.id} product={p} />
           ))}
         </div>
       </section>
@@ -113,7 +110,7 @@ function Index() {
         </div>
       </section>
 
-      <QuickView product={quick} onClose={() => setQuick(null)} />
+
     </Layout>
   );
 }
