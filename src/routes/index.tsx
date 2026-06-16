@@ -6,6 +6,8 @@ import { BermudasShowcase } from "@/components/site/BermudasShowcase";
 import { CapsShowcase } from "@/components/site/CapsShowcase";
 import { ProductCard } from "@/components/site/ProductCard";
 import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES } from "@/lib/store-data";
+import aramisLogo from "@/assets/brands/aramis.jpg.asset.json";
+import reservaLogo from "@/assets/brands/reserva.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
