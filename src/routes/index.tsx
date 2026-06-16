@@ -6,6 +6,8 @@ import { BermudasShowcase } from "@/components/site/BermudasShowcase";
 import { CapsShowcase } from "@/components/site/CapsShowcase";
 import { ProductCard } from "@/components/site/ProductCard";
 import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES } from "@/lib/store-data";
+import aramisLogo from "@/assets/brands/aramis.jpg.asset.json";
+import reservaLogo from "@/assets/brands/reserva.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -69,6 +71,38 @@ function Index() {
           reverse={i % 2 === 1}
         />
       ))}
+
+      {/* PARCEIROS EXTRAS - Glassmorphism */}
+      <section className="relative py-24 px-6 lg:px-10 overflow-hidden bg-[#050505]">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full bg-[var(--gold)]/10 blur-[140px]" />
+          <div className="absolute -bottom-32 -right-32 w-[480px] h-[480px] rounded-full bg-[#e94560]/15 blur-[140px]" />
+        </div>
+        <div className="relative max-w-[1400px] mx-auto reveal">
+          <div className="text-center mb-12">
+            <p className="text-[10px] tracking-[0.5em] uppercase text-[var(--gold)] mb-3">Também na CN</p>
+            <h2 className="font-display text-4xl md:text-6xl text-white">Marcas <span className="italic">parceiras</span></h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {[
+              { name: "Aramis", logo: aramisLogo.url, tagline: "Alfaiataria contemporânea brasileira" },
+              { name: "Reserva", logo: reservaLogo.url, tagline: "Estilo carioca, atitude única" },
+            ].map((b) => (
+              <div
+                key={b.name}
+                className="group relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:border-[var(--gold)]/50 hover:bg-white/[0.08] transition-all duration-500 p-10 lg:p-14 flex flex-col items-center justify-center min-h-[280px]"
+              >
+                <span className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
+                <span className="pointer-events-none absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.12),transparent_50%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                <div className="relative bg-white rounded-xl p-6 lg:p-8 w-full max-w-[320px] flex items-center justify-center shadow-lg group-hover:scale-[1.03] transition-transform duration-500">
+                  <img src={b.logo} alt={`Logo ${b.name}`} loading="lazy" className="w-full h-auto object-contain max-h-24" />
+                </div>
+                <p className="relative mt-6 text-xs tracking-[0.3em] uppercase text-white/60 text-center">{b.tagline}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <BermudasShowcase />
 
