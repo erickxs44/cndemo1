@@ -123,7 +123,7 @@ export function BermudasShowcase() {
         </div>
 
         {/* Blocos inferiores */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+        <div className="grid grid-cols-1 gap-5 lg:gap-6">
           {/* NEW ARRIVALS */}
           <div className="relative grid grid-cols-2 overflow-hidden border border-white/5 bg-[#e8e1d4] min-h-[360px] reveal">
             <div className="flex flex-col justify-center gap-5 p-7 lg:p-10">
@@ -152,33 +152,6 @@ export function BermudasShowcase() {
             </div>
           </div>
 
-          {/* SUMMER COLLECTION */}
-          <div className="relative grid grid-cols-2 overflow-hidden border border-white/5 bg-[#d9c9a8] min-h-[360px] reveal">
-            <div className="flex flex-col justify-center gap-5 p-7 lg:p-10">
-              <p className="text-[10px] tracking-[0.4em] uppercase text-black/60">Verão 26</p>
-              <h3 className="font-display text-2xl md:text-3xl lg:text-4xl text-black leading-tight tracking-tight">
-                Summer <span className="italic">Collection</span>
-              </h3>
-              <p className="text-xs lg:text-sm text-black/70">
-                Leve, fresco e sem esforço.
-              </p>
-              <Link
-                to="/categoria/$slug"
-                params={{ slug: "camisas" }}
-                className="btn-magnetic inline-flex w-fit items-center gap-2 bg-black text-white px-6 py-3 text-[10px] tracking-[0.35em] uppercase font-bold hover:-translate-y-0.5 transition-transform"
-              >
-                Explore Now <ArrowRight className="w-3 h-3" />
-              </Link>
-            </div>
-            <div className="relative">
-              <img
-                src={promoSummer}
-                alt="Coleção de verão em camisas leves"
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
-          </div>
         </div>
       </section>
     </>

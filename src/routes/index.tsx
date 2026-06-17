@@ -5,6 +5,8 @@ import { HeroSlider } from "@/components/site/HeroSlider";
 import { BermudasShowcase } from "@/components/site/BermudasShowcase";
 import { CapsShowcase } from "@/components/site/CapsShowcase";
 import { ProductCard } from "@/components/site/ProductCard";
+import { PartnerBrands } from "@/components/site/PartnerBrands";
+import { ShirtsShowcase } from "@/components/site/ShirtsShowcase";
 import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES } from "@/lib/store-data";
 import aramisLogo from "@/assets/brands/aramis.jpg.asset.json";
 import reservaLogo from "@/assets/brands/reserva.jpg.asset.json";
@@ -59,18 +61,8 @@ function Index() {
         </div>
       </section>
 
-      {/* BRAND SECTIONS - cada uma em tela cheia */}
-      {BRANDS.map((b, i) => (
-        <BrandSection
-          key={b.slug}
-          brandSlug={b.slug}
-          name={b.name}
-          tagline={b.tagline}
-          description={b.description}
-          image={BRAND_IMAGES[b.slug]}
-          reverse={i % 2 === 1}
-        />
-      ))}
+      {/* BRAND SECTIONS - Substituída pela nova seção de 2 quadrados */}
+      <PartnerBrands />
 
       {/* PARCEIROS EXTRAS - Glassmorphism */}
       <section className="relative py-24 px-6 lg:px-10 overflow-hidden bg-[#050505]">
@@ -108,7 +100,7 @@ function Index() {
 
       <CapsShowcase />
 
-
+      <ShirtsShowcase />
       {/* CATEGORIES STRIP */}
       <section className="py-32 px-6 lg:px-10 max-w-[1600px] mx-auto reveal">
         <p className="text-[10px] tracking-[0.5em] uppercase text-[var(--gold)] mb-4 text-center">Universo CN</p>
