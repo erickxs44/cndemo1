@@ -21,7 +21,8 @@ import bBrooks from "@/assets/brands/brooksfield.jpg";
 import bPrada from "@/assets/brands/prada.jpg";
 import bAdidas from "@/assets/brands/adidas.jpg";
 import bDiesel from "@/assets/brands/diesel.jpg";
-
+import aramisLogo from "@/assets/brands/aramis.jpg.asset.json";
+import reservaLogo from "@/assets/brands/reserva.jpg.asset.json";
 export const BRAND_IMAGES: Record<string, string> = {
   "ralph-lauren": bRalph,
   "hugo-boss": bHugo,
@@ -33,6 +34,8 @@ export const BRAND_IMAGES: Record<string, string> = {
   "prada": bPrada,
   "adidas": bAdidas,
   "diesel": bDiesel,
+  "aramis": aramisLogo.url,
+  "reserva": reservaLogo.url,
 };
 
 
@@ -72,7 +75,8 @@ export const BRANDS = [
   { slug: "prada", name: "Prada", tagline: "Made in Milano", description: "A vanguarda italiana do luxo. Design intelectual, materiais excepcionais, presença absoluta." },
   { slug: "adidas", name: "Adidas Originals", tagline: "Impossible is Nothing", description: "Streetwear de herança esportiva. Onde performance encontra cultura urbana premium." },
   { slug: "diesel", name: "Diesel", tagline: "For Successful Living", description: "Atitude italiana e denim icônico. Para quem vive sem pedir permissão." },
-
+  { slug: "aramis", name: "Aramis", tagline: "O homem em movimento", description: "Alfaiataria impecável e design contemporâneo brasileiro para todas as ocasiões." },
+  { slug: "reserva", name: "Reserva", tagline: "Estilo e atitude", description: "Design carioca com atitude única. A reserva de elegância no seu dia a dia." }
 ];
 
 const baseSizes = ["P", "M", "G", "GG"];
