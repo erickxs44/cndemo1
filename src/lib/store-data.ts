@@ -21,8 +21,8 @@ import bBrooks from "@/assets/brands/brooksfield.jpg";
 import bPrada from "@/assets/brands/prada.jpg";
 import bAdidas from "@/assets/brands/adidas.jpg";
 import bDiesel from "@/assets/brands/diesel.jpg";
-import aramisLogo from "@/assets/brands/aramis.jpg.asset.json";
-import reservaLogo from "@/assets/brands/reserva.jpg.asset.json";
+import bAramis from "@/assets/brands/aramis.jpg";
+import bReserva from "@/assets/brands/reserva.jpg";
 export const BRAND_IMAGES: Record<string, string> = {
   "ralph-lauren": bRalph,
   "hugo-boss": bHugo,
@@ -34,8 +34,8 @@ export const BRAND_IMAGES: Record<string, string> = {
   "prada": bPrada,
   "adidas": bAdidas,
   "diesel": bDiesel,
-  "aramis": aramisLogo.url,
-  "reserva": reservaLogo.url,
+  "aramis": bAramis,
+  "reserva": bReserva,
 };
 
 
