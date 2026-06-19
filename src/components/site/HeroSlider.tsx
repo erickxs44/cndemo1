@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Truck, ShieldCheck, CreditCard, RefreshCw, ArrowRight } from "lucide-react";
-import heroModel from "@/assets/hero-model-1.jpg";
+import { Truck, CreditCard, RefreshCw, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import heroModel from "@/assets/hero-model-dark.png";
 import slide2 from "@/assets/hero-slide-2.jpg";
 import slide3 from "@/assets/hero-slide-3.jpg";
 import productShirt from "@/assets/product-shirt-1.jpg";
@@ -12,83 +12,122 @@ type Slide = {
   content: ReactNode;
 };
 
+/* ── Editorial Slide (Inspired by luxury reference) ── */
 const EditorialSlide = () => (
-  <div className="relative w-full h-full bg-[#0a0805]">
-    {/* Backdrop gradient */}
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_55%,#1a1208_0%,#070503_60%,#000_100%)]" />
+  <div className="relative w-full h-full bg-[#080604] overflow-hidden">
+    {/* Subtle warm radial glow behind the model */}
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,#1a1208_0%,#080604_55%,#000_100%)]" />
 
-    {/* Model */}
-    <div className="absolute inset-0 flex items-end justify-center lg:justify-end lg:pr-[10%]">
+    {/* Model image — centered/right, blended into the dark bg */}
+    <div className="absolute inset-0 flex items-center justify-center lg:justify-end">
       <img
         src={heroModel}
-        alt="CN Store — modelo vestindo camisa premium"
-        className="h-[78%] sm:h-[82%] lg:h-[95%] w-auto object-contain object-bottom drop-shadow-[0_0_80px_rgba(212,168,76,0.18)]"
+        alt="CN Store — modelo editorial premium"
+        className="h-full w-auto object-cover object-center opacity-70 lg:opacity-80 max-w-none lg:mr-[5%]"
         loading="eager"
       />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_60%_50%,rgba(212,168,76,0.14)_0%,transparent_50%)]" />
-    </div>
-
-    {/* Mobile readability scrim */}
-    <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/85" />
-
-    {/* Giant brand wordmark — solid white, top */}
-    <div className="pointer-events-none absolute inset-x-0 top-2 sm:top-3 lg:top-6 z-20 flex justify-center overflow-hidden px-2">
-      <h2 className="font-display font-black text-white tracking-[-0.04em] leading-none whitespace-nowrap text-[19vw] lg:text-[15vw] select-none drop-shadow-[0_6px_30px_rgba(0,0,0,0.6)]">
-        CN STORE
-      </h2>
+      {/* Left fade overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#080604] via-[#080604]/80 to-transparent lg:via-[#080604]/50" />
+      {/* Bottom fade */}
+      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#080604] to-transparent" />
     </div>
 
     {/* Content grid */}
-    <div className="relative z-30 h-full max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 pt-[22vw] lg:pt-[14vw] pb-24 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-end lg:items-center">
-      {/* Left — copy */}
-      <div className="lg:col-span-5 text-left">
-        <p className="text-[11px] md:text-xs tracking-[0.4em] uppercase text-[var(--gold)] mb-3 font-bold">
-          CN STORE
-        </p>
-        <h1 className="font-display font-black text-white leading-[0.88] tracking-tight">
-          <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem]">SUPREMO</span>
-          <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[5.5rem]">DO VESTUÁRIO</span>
-        </h1>
-        <p className="mt-5 max-w-md text-xs sm:text-sm md:text-base text-white/75 leading-relaxed font-light">
-          Multimarca casual premium, sofisticado standard-fit com o refinamento que você merece.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/categoria/$slug"
-            params={{ slug: "lancamentos" }}
-            className="btn-magnetic group inline-flex items-center gap-3 bg-[var(--gold)] text-black px-6 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] md:text-xs font-bold tracking-[0.3em] uppercase rounded-md shadow-[0_10px_40px_-10px_rgba(212,168,76,0.6)] hover:bg-[var(--gold-bright)] hover:shadow-[0_15px_50px_-10px_rgba(212,168,76,0.85)] hover:-translate-y-0.5 transition-all duration-300"
-          >
-            Conhecer Lançamentos
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Link>
+    <div className="relative z-10 h-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+
+        {/* Left — Copy block */}
+        <div className="lg:col-span-6 xl:col-span-5">
+          {/* Small label */}
+          <p className="text-[10px] sm:text-[11px] tracking-[0.5em] uppercase text-[var(--gold)]/80 mb-5 font-medium">
+            Feito para
+          </p>
+
+          {/* Main heading — large serif-style */}
+          <h1 className="font-display text-white leading-[1.05] tracking-tight">
+            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-[4.8rem] font-bold">
+              Quem Deixa
+            </span>
+            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-[4.8rem] font-bold">
+              Sua <span className="italic text-[var(--gold)]">Marca.</span>
+            </span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="mt-6 max-w-md text-sm sm:text-base text-white/55 leading-relaxed font-light">
+            Vestuário masculino premium que define sua presença e eleva cada momento.
+          </p>
+
+          {/* CTAs */}
+          <div className="mt-8 flex flex-wrap items-center gap-5">
+            <Link
+              to="/categoria/$slug"
+              params={{ slug: "lancamentos" }}
+              className="group inline-flex items-center gap-3 bg-[var(--gold)] text-black px-7 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase rounded-full shadow-[0_8px_30px_-8px_rgba(212,168,76,0.5)] hover:bg-[var(--gold-bright)] hover:shadow-[0_12px_40px_-8px_rgba(212,168,76,0.7)] hover:-translate-y-0.5 transition-all duration-300"
+            >
+              Conhecer Lançamentos
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/marcas"
+              className="text-xs sm:text-sm tracking-[0.15em] uppercase text-white/60 hover:text-[var(--gold)] transition-colors duration-300 font-medium"
+            >
+              Explorar Marcas
+            </Link>
+          </div>
+
+          {/* Trust badges — avatars + text */}
+          <div className="mt-10 flex items-center gap-4">
+            <div className="flex -space-x-2.5">
+              {[
+                "https://i.pravatar.cc/80?img=11",
+                "https://i.pravatar.cc/80?img=12",
+                "https://i.pravatar.cc/80?img=14",
+                "https://i.pravatar.cc/80?img=33",
+              ].map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt=""
+                  className="w-8 h-8 rounded-full border-2 border-[#080604] object-cover"
+                  loading="lazy"
+                />
+              ))}
+            </div>
+            <div>
+              <p className="text-xs font-semibold text-white/80">+10K clientes</p>
+              <p className="text-[10px] text-white/40">satisfeitos em todo o Brasil</p>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="hidden lg:block lg:col-span-4" />
+        {/* Center spacer */}
+        <div className="hidden lg:block lg:col-span-3 xl:col-span-4" />
 
-      <div className="lg:col-span-3 flex lg:justify-end">
-        <div className="group relative w-full max-w-[220px] sm:max-w-[240px] ml-auto lg:mx-0 bg-black/60 backdrop-blur-xl border border-white/15 rounded-2xl p-3 sm:p-4 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] animate-[float_5s_ease-in-out_infinite] hover:border-[var(--gold)]/60 transition-colors duration-500">
-          <div className="flex items-center justify-between mb-2.5">
-            <span className="text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] font-bold">New Arrival</span>
-            <span className="h-2 w-2 rounded-full bg-[var(--gold)] animate-pulse" />
+        {/* Right — Floating product card */}
+        <div className="lg:col-span-3 flex justify-end">
+          <div className="group relative w-full max-w-[210px] sm:max-w-[230px] ml-auto bg-[#111]/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-3.5 sm:p-4 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.8)] animate-[float_5s_ease-in-out_infinite] hover:border-[var(--gold)]/40 transition-all duration-500">
+            {/* Badge */}
+            <div className="flex items-center gap-2 mb-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
+              <span className="text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] font-bold">Best Seller</span>
+            </div>
+
+            {/* Product image */}
+            <div className="aspect-square overflow-hidden rounded-xl bg-[#1a1410] mb-3">
+              <img
+                src={productShirt}
+                alt="Camisa Premium CN"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Product info */}
+            <p className="text-[11px] tracking-[0.1em] uppercase text-white font-semibold mb-0.5">Camisa Premium CN</p>
+            <p className="text-[10px] text-white/40 mb-2 leading-snug">Multimarca, Acabamento Impecável</p>
+            <p className="font-display text-xl text-white font-bold">R$79,90</p>
           </div>
-          <div className="aspect-square overflow-hidden rounded-lg bg-[#1a1410] mb-3">
-            <img
-              src={productShirt}
-              alt="Camisa Premium CN Multimarca"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              loading="lazy"
-            />
-          </div>
-          <p className="text-[10px] tracking-[0.2em] uppercase text-white/80 font-semibold mb-1">Premium CN Multimarca</p>
-          <p className="text-[10px] text-white/60 mb-1.5 leading-snug">Editorial Creations, Detailed Finishes</p>
-          <p className="font-display text-lg sm:text-xl text-white font-bold mb-3">R$ 79,90</p>
-          <Link
-            to="/marcas"
-            className="block w-full text-center bg-[var(--gold)] text-black py-2 text-[10px] font-bold tracking-[0.25em] uppercase rounded-md hover:bg-[var(--gold-bright)] transition-colors"
-          >
-            Ver as Marcas
-          </Link>
         </div>
       </div>
     </div>
@@ -116,10 +155,6 @@ const SLIDES: Slide[] = [
             <Truck className="w-5 h-5 text-[var(--gold)]" />
             <span className="text-[10px] tracking-[0.3em] uppercase">Frete para todo o país</span>
           </div>
-          <div className="flex items-center gap-3">
-            <ShieldCheck className="w-5 h-5 text-[var(--gold)]" />
-            <span className="text-[10px] tracking-[0.3em] uppercase">Compra Segura</span>
-          </div>
         </div>
       </>
     ),
@@ -142,7 +177,7 @@ const SLIDES: Slide[] = [
           <Link
             to="/categoria/$slug"
             params={{ slug: "lancamentos" }}
-            className="btn-magnetic inline-flex items-center gap-4 bg-[var(--gold)] text-black px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-[var(--gold-bright)]"
+            className="inline-flex items-center gap-4 bg-[var(--gold)] text-black px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase rounded-full hover:bg-[var(--gold-bright)] transition-colors"
           >
             Ver Lançamentos <span>→</span>
           </Link>
@@ -176,6 +211,9 @@ export function HeroSlider() {
     }
     touchStartX.current = null;
   }
+
+  const goPrev = () => setActive((i) => (i - 1 + SLIDES.length) % SLIDES.length);
+  const goNext = () => setActive((i) => (i + 1) % SLIDES.length);
 
   return (
     <section
@@ -230,18 +268,41 @@ export function HeroSlider() {
         </div>
       </div>
 
-      {/* Dots */}
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
-        {SLIDES.map((_, i) => (
+      {/* Dots + arrows — bottom area */}
+      <div className="absolute bottom-16 left-0 right-0 z-30 max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center justify-between">
+        {/* Dots */}
+        <div className="flex items-center gap-2.5">
+          {SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              aria-label={`Ir para slide ${i + 1}`}
+              className={`rounded-full transition-all duration-500 ${
+                i === active
+                  ? "w-8 h-2 bg-[var(--gold)]"
+                  : "w-2 h-2 bg-white/25 hover:bg-white/50"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Arrows */}
+        <div className="flex items-center gap-2">
           <button
-            key={i}
-            onClick={() => setActive(i)}
-            aria-label={`Ir para slide ${i + 1}`}
-            className={`h-[2px] transition-all duration-500 ${
-              i === active ? "w-10 bg-[var(--gold)]" : "w-5 bg-white/30 hover:bg-white/60"
-            }`}
-          />
-        ))}
+            onClick={goPrev}
+            aria-label="Slide anterior"
+            className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/50 transition-all duration-300"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={goNext}
+            aria-label="Próximo slide"
+            className="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/50 transition-all duration-300"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
     </section>
   );
