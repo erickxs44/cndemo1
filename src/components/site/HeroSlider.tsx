@@ -34,7 +34,7 @@ const EditorialSlide = () => (
     {/* Giant brand wordmark — solid white, top */}
     <div className="pointer-events-none absolute inset-x-0 top-2 sm:top-3 lg:top-6 z-20 flex justify-center overflow-hidden px-2">
       <h2 className="font-display font-black text-white tracking-[-0.04em] leading-none whitespace-nowrap text-[19vw] lg:text-[15vw] select-none drop-shadow-[0_6px_30px_rgba(0,0,0,0.6)]">
-        +CN<span className="text-[var(--gold)]">✱</span>STORE
+        CN STORE
       </h2>
     </div>
 
