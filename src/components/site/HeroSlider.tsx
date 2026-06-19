@@ -12,7 +12,6 @@ type Slide = {
   content: ReactNode;
 };
 
-/* ── Editorial Slide (Inspired by luxury reference) ── */
 const EditorialSlide = () => (
   <div className="relative w-full h-full bg-[#080604] overflow-hidden">
     {/* Subtle warm radial glow behind the model */}
@@ -23,61 +22,63 @@ const EditorialSlide = () => (
       <img
         src={heroModel}
         alt="CN Store — modelo editorial premium"
-        className="h-full w-auto object-cover object-center opacity-70 lg:opacity-80 max-w-none lg:mr-[5%]"
+        className="h-full w-auto object-cover object-center opacity-40 lg:opacity-80 max-w-none lg:mr-[5%]"
         loading="eager"
       />
+      {/* Mobile scrim for better text readability */}
+      <div className="lg:hidden absolute inset-0 bg-[#080604]/60" />
       {/* Left fade overlay for text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#080604] via-[#080604]/80 to-transparent lg:via-[#080604]/50" />
       {/* Bottom fade */}
-      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[#080604] to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#080604] to-transparent" />
     </div>
 
     {/* Content grid */}
-    <div className="relative z-10 h-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 flex items-center">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full">
+    <div className="relative z-10 h-full max-w-[1400px] mx-auto px-5 sm:px-10 lg:px-16 flex items-center pt-16 lg:pt-0 pb-32 lg:pb-0">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full mt-10 lg:mt-0">
 
         {/* Left — Copy block */}
-        <div className="lg:col-span-6 xl:col-span-5">
+        <div className="lg:col-span-6 xl:col-span-5 flex flex-col justify-center">
           {/* Small label */}
-          <p className="text-[10px] sm:text-[11px] tracking-[0.5em] uppercase text-[var(--gold)]/80 mb-5 font-medium">
+          <p className="text-[9px] sm:text-[11px] tracking-[0.5em] uppercase text-[var(--gold)]/80 mb-3 sm:mb-5 font-medium">
             Feito para
           </p>
 
           {/* Main heading — large serif-style */}
-          <h1 className="font-display text-white leading-[1.05] tracking-tight">
-            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-[4.8rem] font-bold">
+          <h1 className="font-display text-white leading-[1.05] tracking-tight drop-shadow-md">
+            <span className="block text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-[4.8rem] font-bold">
               Quem Deixa
             </span>
-            <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-[4.8rem] font-bold">
+            <span className="block text-[2.5rem] sm:text-5xl md:text-6xl lg:text-[4.2rem] xl:text-[4.8rem] font-bold">
               Sua <span className="italic text-[var(--gold)]">Marca.</span>
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-6 max-w-md text-sm sm:text-base text-white/55 leading-relaxed font-light">
+          <p className="mt-4 sm:mt-6 max-w-md text-xs sm:text-base text-white/70 lg:text-white/55 leading-relaxed font-light">
             Vestuário masculino premium que define sua presença e eleva cada momento.
           </p>
 
           {/* CTAs */}
-          <div className="mt-8 flex flex-wrap items-center gap-5">
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
             <Link
               to="/categoria/$slug"
               params={{ slug: "lancamentos" }}
-              className="group inline-flex items-center gap-3 bg-[var(--gold)] text-black px-7 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase rounded-full shadow-[0_8px_30px_-8px_rgba(212,168,76,0.5)] hover:bg-[var(--gold-bright)] hover:shadow-[0_12px_40px_-8px_rgba(212,168,76,0.7)] hover:-translate-y-0.5 transition-all duration-300"
+              className="group inline-flex items-center justify-center w-full sm:w-auto bg-[var(--gold)] text-black px-6 sm:px-8 py-3.5 sm:py-4 text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase rounded-full shadow-[0_8px_30px_-8px_rgba(212,168,76,0.5)] hover:bg-[var(--gold-bright)] hover:shadow-[0_12px_40px_-8px_rgba(212,168,76,0.7)] hover:-translate-y-0.5 transition-all duration-300"
             >
               Conhecer Lançamentos
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/marcas"
-              className="text-xs sm:text-sm tracking-[0.15em] uppercase text-white/60 hover:text-[var(--gold)] transition-colors duration-300 font-medium"
+              className="text-[10px] sm:text-sm tracking-[0.15em] uppercase text-white/80 hover:text-[var(--gold)] transition-colors duration-300 font-medium w-full sm:w-auto text-center py-2 sm:py-0"
             >
               Explorar Marcas
             </Link>
           </div>
 
           {/* Trust badges — avatars + text */}
-          <div className="mt-10 flex items-center gap-4">
+          <div className="mt-8 sm:mt-10 flex items-center gap-3 sm:gap-4">
             <div className="flex -space-x-2.5">
               {[
                 "https://i.pravatar.cc/80?img=11",
@@ -89,14 +90,14 @@ const EditorialSlide = () => (
                   key={i}
                   src={src}
                   alt=""
-                  className="w-8 h-8 rounded-full border-2 border-[#080604] object-cover"
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 border-[#080604] object-cover"
                   loading="lazy"
                 />
               ))}
             </div>
             <div>
-              <p className="text-xs font-semibold text-white/80">+10K clientes</p>
-              <p className="text-[10px] text-white/40">satisfeitos em todo o Brasil</p>
+              <p className="text-[10px] sm:text-xs font-semibold text-white/90">+10K clientes</p>
+              <p className="text-[8px] sm:text-[10px] text-white/50">satisfeitos no Brasil</p>
             </div>
           </div>
         </div>
@@ -105,16 +106,16 @@ const EditorialSlide = () => (
         <div className="hidden lg:block lg:col-span-3 xl:col-span-4" />
 
         {/* Right — Floating product card */}
-        <div className="lg:col-span-3 flex justify-end">
-          <div className="group relative w-full max-w-[210px] sm:max-w-[230px] ml-auto bg-[#111]/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-3.5 sm:p-4 shadow-[0_24px_64px_-16px_rgba(0,0,0,0.8)] animate-[float_5s_ease-in-out_infinite] hover:border-[var(--gold)]/40 transition-all duration-500">
+        <div className="lg:col-span-3 flex justify-start sm:justify-end mt-4 lg:mt-0">
+          <div className="group relative w-full max-w-[180px] sm:max-w-[210px] lg:max-w-[230px] ml-0 lg:ml-auto bg-[#111]/90 lg:bg-[#111]/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-3 sm:p-3.5 lg:p-4 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.8)] lg:shadow-[0_24px_64px_-16px_rgba(0,0,0,0.8)] lg:animate-[float_5s_ease-in-out_infinite] hover:border-[var(--gold)]/40 transition-all duration-500">
             {/* Badge */}
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
-              <span className="text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] font-bold">Best Seller</span>
+              <span className="text-[8px] sm:text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] font-bold">Best Seller</span>
             </div>
 
             {/* Product image */}
-            <div className="aspect-square overflow-hidden rounded-xl bg-[#1a1410] mb-3">
+            <div className="aspect-square overflow-hidden rounded-xl bg-[#1a1410] mb-2 sm:mb-3">
               <img
                 src={productShirt}
                 alt="Camisa Premium CN"
@@ -124,9 +125,9 @@ const EditorialSlide = () => (
             </div>
 
             {/* Product info */}
-            <p className="text-[11px] tracking-[0.1em] uppercase text-white font-semibold mb-0.5">Camisa Premium CN</p>
-            <p className="text-[10px] text-white/40 mb-2 leading-snug">Multimarca, Acabamento Impecável</p>
-            <p className="font-display text-xl text-white font-bold">R$79,90</p>
+            <p className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-white font-semibold mb-0.5">Camisa Premium CN</p>
+            <p className="text-[9px] sm:text-[10px] text-white/50 mb-1 sm:mb-2 leading-snug truncate">Multimarca, Acabamento Impecável</p>
+            <p className="font-display text-lg sm:text-xl text-white font-bold">R$79,90</p>
           </div>
         </div>
       </div>
