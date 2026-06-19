@@ -22,13 +22,13 @@ const EditorialSlide = () => (
       <img
         src={heroModel}
         alt="CN Store — modelo editorial premium"
-        className="h-full w-auto object-cover object-center opacity-40 lg:opacity-80 max-w-none lg:mr-[5%]"
+        className="h-full w-auto object-cover object-center opacity-70 lg:opacity-100 max-w-none lg:mr-[5%]"
         loading="eager"
       />
       {/* Mobile scrim for better text readability */}
-      <div className="lg:hidden absolute inset-0 bg-[#080604]/60" />
+      <div className="lg:hidden absolute inset-0 bg-[#080604]/50" />
       {/* Left fade overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#080604] via-[#080604]/80 to-transparent lg:via-[#080604]/50" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#080604] via-[#080604]/80 to-transparent lg:via-[#080604]/40" />
       {/* Bottom fade */}
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#080604] to-transparent" />
     </div>
@@ -38,7 +38,7 @@ const EditorialSlide = () => (
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full mt-10 lg:mt-0">
 
         {/* Left — Copy block */}
-        <div className="lg:col-span-6 xl:col-span-5 flex flex-col justify-center">
+        <div className="lg:col-span-8 xl:col-span-7 flex flex-col justify-center">
           {/* Small label */}
           <p className="text-[9px] sm:text-[11px] tracking-[0.5em] uppercase text-[var(--gold)]/80 mb-3 sm:mb-5 font-medium">
             Feito para
@@ -55,7 +55,7 @@ const EditorialSlide = () => (
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-4 sm:mt-6 max-w-md text-xs sm:text-base text-white/70 lg:text-white/55 leading-relaxed font-light">
+          <p className="mt-4 sm:mt-6 max-w-md lg:max-w-lg text-xs sm:text-base text-white/70 lg:text-white/60 leading-relaxed font-light">
             Vestuário masculino premium que define sua presença e eleva cada momento.
           </p>
 
@@ -102,34 +102,6 @@ const EditorialSlide = () => (
           </div>
         </div>
 
-        {/* Center spacer */}
-        <div className="hidden lg:block lg:col-span-3 xl:col-span-4" />
-
-        {/* Right — Floating product card */}
-        <div className="lg:col-span-3 flex justify-start sm:justify-end mt-4 lg:mt-0">
-          <div className="group relative w-full max-w-[180px] sm:max-w-[210px] lg:max-w-[230px] ml-0 lg:ml-auto bg-[#111]/90 lg:bg-[#111]/80 backdrop-blur-2xl border border-white/10 rounded-2xl p-3 sm:p-3.5 lg:p-4 shadow-[0_15px_40px_-10px_rgba(0,0,0,0.8)] lg:shadow-[0_24px_64px_-16px_rgba(0,0,0,0.8)] lg:animate-[float_5s_ease-in-out_infinite] hover:border-[var(--gold)]/40 transition-all duration-500">
-            {/* Badge */}
-            <div className="flex items-center gap-1.5 sm:gap-2 mb-2 sm:mb-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
-              <span className="text-[8px] sm:text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] font-bold">Best Seller</span>
-            </div>
-
-            {/* Product image */}
-            <div className="aspect-square overflow-hidden rounded-xl bg-[#1a1410] mb-2 sm:mb-3">
-              <img
-                src={productShirt}
-                alt="Camisa Premium CN"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Product info */}
-            <p className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-white font-semibold mb-0.5">Camisa Premium CN</p>
-            <p className="text-[9px] sm:text-[10px] text-white/50 mb-1 sm:mb-2 leading-snug truncate">Multimarca, Acabamento Impecável</p>
-            <p className="font-display text-lg sm:text-xl text-white font-bold">R$79,90</p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
