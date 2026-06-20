@@ -40,7 +40,7 @@ function mapDbProduct(row: any): Product {
     variantId: defaultVariantId,
     name: row.name,
     brand: "CN Store", // Default brand
-    category: "geral", // Default category
+    category: row.categories?.[0]?.handle?.pt || row.categories?.[0]?.name?.pt?.toLowerCase() || "geral",
     price: Number(row.price),
     oldPrice: row.promotional_price ? Number(row.promotional_price) : undefined,
     image: row.images?.[0]?.src || "",
@@ -81,4 +81,28 @@ export const getProductByIdFn = createServerFn({ method: 'GET' })
     }
 
     return mapDbProduct(data);
+  });
+
+export const getProductsByCategoryFn = createServerFn({ method: 'GET' })
+  .validator((categorySlug: string) => categorySlug)
+  .handler(async ({ data: categorySlug }) => {
+    // In a real scenario, we'd query by JSON or specific column.
+    // For now, we fetch all and filter in JS if category logic is complex, 
+    // or we query using Supabase textSearch/like on JSON. 
+    // To be safe with the JSON structure, we fetch all and filter.
+    const { data, error } = await supabaseAdmin
+      .from('products')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching products by category:', error);
+      return [];
+    }
+
+    const mapped = (data || []).map(mapDbProduct);
+    if (categorySlug === "lancamentos") {
+      return mapped.filter(p => p.isNew);
+    }
+    return mapped.filter(p => p.category === categorySlug);
   });

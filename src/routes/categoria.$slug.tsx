@@ -1,13 +1,15 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { ProductCard } from "@/components/site/ProductCard";
-import { CATEGORIES, PRODUCTS } from "@/lib/store-data";
+import { CATEGORIES } from "@/lib/store-data";
+import { getProductsByCategoryFn } from "@/lib/server/products";
 
 export const Route = createFileRoute("/categoria/$slug")({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
     const cat = CATEGORIES.find(c => c.slug === params.slug);
     if (!cat) throw notFound();
-    return { cat };
+    const products = await getProductsByCategoryFn({ data: params.slug });
+    return { cat, products };
   },
   head: ({ loaderData }) => ({
     meta: [
@@ -21,11 +23,7 @@ export const Route = createFileRoute("/categoria/$slug")({
 });
 
 function CategoryPage() {
-  const { cat } = Route.useLoaderData();
-  
-  const products = cat.slug === "lancamentos"
-    ? PRODUCTS.filter(p => p.isNew)
-    : PRODUCTS.filter(p => p.category === cat.slug);
+  const { cat, products } = Route.useLoaderData();
 
   return (
     <Layout>
