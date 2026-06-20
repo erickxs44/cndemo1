@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { X, Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/store/cart";
-import { buildCheckoutUrl } from "@/lib/store-data";
+
 
 export function CartDrawer() {
-  const { open, setOpen, items, remove, updateQty, total } = useCart();
+  const { open, setOpen, items, remove, updateQty, total, checkout, isSyncing } = useCart();
 
   useEffect(() => {
     if (!open) return;
@@ -13,11 +13,6 @@ export function CartDrawer() {
   }, [open]);
 
   if (!open) return null;
-
-  const checkout = () => {
-    const url = buildCheckoutUrl(items.map(i => ({ variantId: i.product.variantId, quantity: i.quantity })));
-    window.location.href = url;
-  };
 
   return (
     <div className="fixed inset-0 z-[110]">
@@ -65,8 +60,11 @@ export function CartDrawer() {
               <span className="text-xs tracking-[0.3em] uppercase text-white/60">Subtotal</span>
               <span className="font-display text-2xl text-[var(--gold)]">R$ {total.toFixed(2)}</span>
             </div>
-            <button onClick={checkout} className="btn-magnetic w-full py-4 bg-[var(--gold)] text-black text-xs font-bold tracking-[0.3em] uppercase hover:bg-[var(--gold-bright)] transition">
-              Finalizar Compra →
+            <button 
+              onClick={checkout} 
+              disabled={isSyncing}
+              className="btn-magnetic w-full py-4 bg-[var(--gold)] text-black text-xs font-bold tracking-[0.3em] uppercase hover:bg-[var(--gold-bright)] transition disabled:opacity-50 disabled:cursor-not-allowed">
+              {isSyncing ? 'Sincronizando...' : 'Finalizar Compra →'}
             </button>
             <p className="text-[10px] text-center text-white/30 tracking-wider">Checkout seguro via Nuvemshop</p>
           </div>

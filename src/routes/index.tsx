@@ -2,13 +2,15 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { BrandSection } from "@/components/site/BrandSection";
 import { HeroSlider } from "@/components/site/HeroSlider";
-import { BermudasShowcase } from "@/components/site/BermudasShowcase";
-import { CapsShowcase } from "@/components/site/CapsShowcase";
 import { ProductCard } from "@/components/site/ProductCard";
-import { ShirtsShowcase } from "@/components/site/ShirtsShowcase";
-import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES } from "@/lib/store-data";
+import { PRODUCTS, BRANDS, CATEGORIES, BRAND_IMAGES, type Product } from "@/lib/store-data";
+import { getProductsFn } from "@/lib/server/products";
 
 export const Route = createFileRoute("/")({
+  loader: async () => {
+    const allProducts = await getProductsFn();
+    return { allProducts };
+  },
   head: () => ({
     meta: [
       { title: "CN STORE — O Padrão Supremo do Vestuário Masculino" },
@@ -20,7 +22,8 @@ export const Route = createFileRoute("/")({
 
 
 function Index() {
-  const featured = PRODUCTS.slice(0, 6);
+  const { allProducts } = Route.useLoaderData() as { allProducts: Product[] };
+  const featured = allProducts.slice(0, 6);
 
   return (
     <Layout>
@@ -71,11 +74,17 @@ function Index() {
         />
       ))}
 
-      <BermudasShowcase />
-
-      <CapsShowcase />
-
-      <ShirtsShowcase />
+      {/* ALL PRODUCTS */}
+      <section className="py-32 px-6 lg:px-10 max-w-[1600px] mx-auto reveal">
+        <h2 className="font-display text-4xl md:text-5xl text-white tracking-tight text-center mb-16">
+          Todos os Produtos
+        </h2>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+          {allProducts.map(p => (
+            <ProductCard key={p.id} product={p} />
+          ))}
+        </div>
+      </section>
       {/* CATEGORIES STRIP */}
       <section className="py-32 px-6 lg:px-10 max-w-[1600px] mx-auto reveal">
         <p className="text-[10px] tracking-[0.5em] uppercase text-[var(--gold)] mb-4 text-center">Universo CN</p>

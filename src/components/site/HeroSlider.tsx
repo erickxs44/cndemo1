@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Truck, CreditCard, RefreshCw, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import heroModel from "@/assets/hero-model-dark.png";
-import slide2 from "@/assets/hero-slide-2.jpg";
+import slide2 from "@/assets/hero-imported.jpg";
 import slide3 from "@/assets/hero-slide-3.jpg";
 import productShirt from "@/assets/product-shirt-1.jpg";
 
@@ -112,24 +112,32 @@ const SLIDES: Slide[] = [
   {
     layout: "centered",
     image: slide2,
+    overlayClass: "bg-gradient-to-t from-black/60 to-transparent",
     content: (
-      <>
-        <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-[var(--gold)] mb-6">Entrega Premium</p>
-        <h1 className="font-display font-bold leading-[0.9]">
-          <span className="block text-[var(--gold)] text-4xl md:text-7xl lg:text-8xl tracking-tight">
-            ENVIAMOS PARA<br />TODO O BRASIL
+      <div className="flex flex-col items-center justify-center h-full pt-10">
+        <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-white/80 mb-4 sm:mb-6">Curadoria Internacional</p>
+        <h1 className="font-display font-light leading-[1.1]">
+          <span className="block text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-widest drop-shadow-lg">
+            PRODUTOS
           </span>
-          <span className="block text-white text-base md:text-xl lg:text-2xl tracking-[0.2em] mt-8 max-w-2xl mx-auto font-sans font-light normal-case">
-            Receba o melhor da moda premium no conforto da sua casa.
+          <span className="block text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-widest drop-shadow-lg font-bold italic">
+            IMPORTADOS
           </span>
         </h1>
-        <div className="mt-10 flex items-center justify-center gap-10 text-white/80">
-          <div className="flex items-center gap-3">
-            <Truck className="w-5 h-5 text-[var(--gold)]" />
-            <span className="text-[10px] tracking-[0.3em] uppercase">Frete para todo o país</span>
-          </div>
+        <p className="text-white/80 text-xs md:text-sm tracking-[0.2em] mt-6 max-w-lg mx-auto font-sans font-light uppercase">
+          As melhores marcas globais, agora ao seu alcance.
+        </p>
+        <div className="mt-10 sm:mt-12 flex items-center justify-center">
+          <Link
+            to="/categoria/$slug"
+            params={{ slug: "importados" }}
+            className="group inline-flex items-center gap-3 border border-white/20 text-white px-8 py-3.5 sm:py-4 text-[10px] sm:text-xs font-medium tracking-[0.3em] uppercase rounded-none hover:border-white/60 hover:bg-white/5 transition-all duration-300"
+          >
+            Ver Peças Importadas
+            <ArrowRight className="w-4 h-4 text-[var(--gold)] transition-transform group-hover:translate-x-1" />
+          </Link>
         </div>
-      </>
+      </div>
     ),
   },
   {
@@ -214,7 +222,7 @@ export function HeroSlider() {
                   i === active ? "scale-105" : "scale-100"
                 }`}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
+              <div className={`absolute inset-0 ${s.overlayClass || "bg-gradient-to-t from-black via-black/60 to-black/30"}`} />
               <div className="relative z-10 min-h-[100svh] lg:min-h-screen flex items-center justify-center text-center px-6 max-w-6xl mx-auto">
                 {s.content}
               </div>

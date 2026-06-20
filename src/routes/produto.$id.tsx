@@ -3,13 +3,15 @@ import { useEffect, useMemo, useState } from "react";
 import { ChevronDown, Check, ShoppingBag, Truck, ShieldCheck, RefreshCw, ArrowRight } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PRODUCTS, type Product } from "@/lib/store-data";
+import { getProductByIdFn, getProductsFn } from "@/lib/server/products";
 import { useCart } from "@/store/cart";
 
 export const Route = createFileRoute("/produto/$id")({
-  loader: ({ params }) => {
-    const product = PRODUCTS.find(p => p.id === params.id);
+  loader: async ({ params }) => {
+    const product = await getProductByIdFn({ data: params.id });
     if (!product) throw notFound();
-    return { product };
+    const allProducts = await getProductsFn();
+    return { product, allProducts };
   },
   head: ({ loaderData }) => {
     const p = loaderData?.product;
@@ -29,7 +31,7 @@ export const Route = createFileRoute("/produto/$id")({
 });
 
 function ProductPage() {
-  const { product } = Route.useLoaderData() as { product: Product };
+  const { product, allProducts } = Route.useLoaderData() as { product: Product, allProducts: Product[] };
   const navigate = useNavigate();
   const { add } = useCart();
 
@@ -52,12 +54,12 @@ function ProductPage() {
   }, [product.id]);
 
   const related = useMemo(() => {
-    const same = PRODUCTS.filter(p => p.id !== product.id && p.category === product.category);
-    const others = PRODUCTS.filter(p => p.id !== product.id && p.category !== product.category);
+    const same = allProducts.filter(p => p.id !== product.id && p.category === product.category);
+    const others = allProducts.filter(p => p.id !== product.id && p.category !== product.category);
     const combined = [...same, ...others];
     const seen = new Set<string>();
     return combined.filter(p => (seen.has(p.id) ? false : (seen.add(p.id), true))).slice(0, 4);
-  }, [product.id, product.category]);
+  }, [product.id, product.category, allProducts]);
 
   const installment = (product.price / 6).toFixed(2);
 
