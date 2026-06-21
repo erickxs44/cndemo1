@@ -4,7 +4,7 @@ import bermuda1 from "@/assets/product-bermuda-1.jpg";
 import bermuda2 from "@/assets/product-bermuda-2.jpg";
 import bermuda3 from "@/assets/product-bermuda-3.jpg";
 import bermuda4 from "@/assets/product-bermuda-4.jpg";
-import promoRack from "@/assets/promo-rack.jpg";
+import promo3CamisasImg from "@/assets/promo-3camisas.png";
 import promoNew from "@/assets/promo-newarrivals.jpg";
 import promoSummer from "@/assets/promo-summer.jpg";
 
@@ -91,8 +91,8 @@ export function BermudasShowcase() {
         <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden border border-white/5 reveal">
           <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[420px]">
             <img
-              src={promoRack}
-              alt="Cabideiro com peças premium"
+              src={promo3CamisasImg}
+              alt="Promoção de Camisas"
               loading="lazy"
               className="absolute inset-0 w-full h-full object-cover"
             />
