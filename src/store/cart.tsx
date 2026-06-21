@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import type { Product } from "@/lib/store-data";
-import { createCartFn, updateCartFn } from "@/lib/server/cart";
+import { createCartFn, updateCartFn } from "@/lib/queries/cart";
 
 export type CartItem = {
   product: Product;

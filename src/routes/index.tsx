@@ -3,7 +3,7 @@ import { Layout } from "@/components/site/Layout";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ProductCard } from "@/components/site/ProductCard";
 import { CATEGORIES, type Product } from "@/lib/store-data";
-import { getProductsFn } from "@/lib/server/products";
+import { getProductsFn } from "@/lib/queries/products";
 import importadosImg from "@/assets/importados-section.jpg";
 
 export const Route = createFileRoute("/")({

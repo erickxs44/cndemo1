@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ChevronDown, Check, ShoppingBag, Truck, ShieldCheck, RefreshCw, ArrowRight } from "lucide-react";
 import { Layout } from "@/components/site/Layout";
 import { PRODUCTS, type Product } from "@/lib/store-data";
-import { getProductByIdFn, getProductsFn } from "@/lib/server/products";
+import { getProductByIdFn, getProductsFn } from "@/lib/queries/products";
 import { useCart } from "@/store/cart";
 
 export const Route = createFileRoute("/produto/$id")({

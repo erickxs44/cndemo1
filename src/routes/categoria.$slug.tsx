@@ -2,7 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { ProductCard } from "@/components/site/ProductCard";
 import { CATEGORIES } from "@/lib/store-data";
-import { getProductsByCategoryFn } from "@/lib/server/products";
+import { getProductsByCategoryFn } from "@/lib/queries/products";
 
 export const Route = createFileRoute("/categoria/$slug")({
   loader: async ({ params }) => {
