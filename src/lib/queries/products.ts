@@ -1,52 +1,20 @@
 import { createServerFn } from '@tanstack/react-start';
 import { supabaseAdmin } from '../supabase-admin';
-import type { Product } from '../store-data';
+import { PRODUCTS, type Product } from '../store-data';
 
-// Helper to map DB row to the frontend Product type
+// Map the real Supabase table row (produtos_nuvemshop) to the frontend Product type
 function mapDbProduct(row: any): Product {
-  // Extract colors and sizes from Nuvemshop variations
-  const colorsSet = new Set<string>();
-  const sizesSet = new Set<string>();
-  
-  if (Array.isArray(row.variations)) {
-    row.variations.forEach((v: any) => {
-      // Nuvemshop variants have 'values' array
-      if (Array.isArray(v.values)) {
-        v.values.forEach((val: any) => {
-          // A simple heuristic if property names are not strictly defined
-          // Usually 'Cor' or 'Color'
-          const name = val.pt || val.es || val.en || String(val);
-          // If it looks like a size (P, M, G, GG, numbers)
-          if (/^(PP|P|M|G|GG|XG|[0-9]{2})$/i.test(name)) {
-            sizesSet.add(name);
-          } else {
-            // Otherwise assume color or generic attribute
-            colorsSet.add(name);
-          }
-        });
-      }
-    });
-  }
-
-  const colors = Array.from(colorsSet).map(c => ({ name: c, hex: "#000000" })); // Hex is hard to deduce without a map
-  const sizes = Array.from(sizesSet);
-  if (colors.length === 0) colors.push({ name: "Padrão", hex: "#000" });
-  if (sizes.length === 0) sizes.push("Único");
-
-  const defaultVariantId = row.variations?.[0]?.id?.toString() || row.id.toString();
-
   return {
     id: row.id.toString(),
-    variantId: defaultVariantId,
-    name: row.name,
-    brand: "CN Store", // Default brand
-    category: row.categories?.[0]?.handle?.pt || row.categories?.[0]?.name?.pt?.toLowerCase() || "geral",
-    price: Number(row.price),
-    oldPrice: row.promotional_price ? Number(row.promotional_price) : undefined,
-    image: row.images?.[0]?.src || "",
-    colors,
-    sizes,
-    description: "Produto oficial CN Store", // Could be mapped from DB if we added description
+    variantId: row.variant_id?.toString() || row.id.toString(),
+    name: row.nome,
+    brand: "CN Store",
+    category: (row.categoria || "geral").toLowerCase(),
+    price: Number(row.preco) || 0,
+    image: row.imagem_url || "",
+    colors: [{ name: "Padrão", hex: "#000" }],
+    sizes: ["Único"],
+    description: "Produto oficial CN Store",
     isNew: true,
   };
 }
@@ -54,55 +22,50 @@ function mapDbProduct(row: any): Product {
 export const getProductsFn = createServerFn({ method: 'GET' })
   .handler(async () => {
     const { data, error } = await supabaseAdmin
-      .from('products')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .from('produtos_nuvemshop')
+      .select('*');
 
-    if (error) {
-      console.error('Error fetching products:', error);
-      return [];
+    if (error || !data || data.length === 0) {
+      return PRODUCTS; // Fallback to mock products
     }
 
-    return (data || []).map(mapDbProduct);
+    const realIds = new Set(data.map((r: any) => r.id.toString()));
+    const dbProducts = data.map(mapDbProduct);
+    const mockFallback = PRODUCTS.filter(p => !realIds.has(p.id));
+    return [...dbProducts, ...mockFallback];
   });
 
 export const getProductByIdFn = createServerFn({ method: 'GET' })
   .validator((id: string) => id)
   .handler(async ({ data: id }) => {
     const { data, error } = await supabaseAdmin
-      .from('products')
+      .from('produtos_nuvemshop')
       .select('*')
       .eq('id', id)
-      .single();
+      .maybeSingle();
 
-    if (error || !data) {
-      console.error('Error fetching product:', error);
-      return null;
+    if (!error && data) {
+      return mapDbProduct(data);
     }
 
-    return mapDbProduct(data);
+    // Fallback: find in mock PRODUCTS
+    return PRODUCTS.find(p => p.id === id) || null;
   });
 
 export const getProductsByCategoryFn = createServerFn({ method: 'GET' })
   .validator((categorySlug: string) => categorySlug)
   .handler(async ({ data: categorySlug }) => {
-    // In a real scenario, we'd query by JSON or specific column.
-    // For now, we fetch all and filter in JS if category logic is complex, 
-    // or we query using Supabase textSearch/like on JSON. 
-    // To be safe with the JSON structure, we fetch all and filter.
     const { data, error } = await supabaseAdmin
-      .from('products')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .from('produtos_nuvemshop')
+      .select('*');
 
-    if (error) {
-      console.error('Error fetching products by category:', error);
-      return [];
-    }
+    const dbProducts = (!error && data) ? data.map(mapDbProduct) : [];
+    const realIds = new Set(dbProducts.map(p => p.id));
+    const mockFallback = PRODUCTS.filter(p => !realIds.has(p.id));
+    const all = [...dbProducts, ...mockFallback];
 
-    const mapped = (data || []).map(mapDbProduct);
     if (categorySlug === "lancamentos") {
-      return mapped.filter(p => p.isNew);
+      return all.filter(p => p.isNew);
     }
-    return mapped.filter(p => p.category === categorySlug);
+    return all.filter(p => p.category === categorySlug);
   });
