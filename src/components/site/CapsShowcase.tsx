@@ -70,10 +70,6 @@ export function CapsShowcase() {
               >
                 Comprar Bonés <ArrowRight className="w-3.5 h-3.5" />
               </Link>
-              <div className="flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase text-white/50">
-                <span className="w-8 h-px bg-white/30" />
-                a partir de <span className="text-white">R$ 84,90</span>
-              </div>
             </div>
           </div>
 

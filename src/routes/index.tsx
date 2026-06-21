@@ -6,7 +6,7 @@ import { BermudasShowcase } from "@/components/site/BermudasShowcase";
 import { CapsShowcase } from "@/components/site/CapsShowcase";
 import { CATEGORIES, type Product } from "@/lib/store-data";
 import { getProductsFn } from "@/lib/queries/products";
-import importadosImg from "@/assets/importados-section.jpg";
+import promo3CamisasImg from "@/assets/promo-3camisas.png";
 
 export const Route = createFileRoute("/")({
   loader: async () => {
@@ -63,27 +63,30 @@ function Index() {
         </div>
       </section>
 
-      {/* SEÇÃO IMPORTADOS */}
+      {/* SEÇÃO PROMOÇÃO */}
       <section className="relative h-[80vh] md:h-screen w-full overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0">
           <img
-            src={importadosImg}
-            alt="Coleção Importados"
+            src={promo3CamisasImg}
+            alt="Promoção 3 Camisas"
             className="w-full h-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-black/60" />
         </div>
         <div className="relative z-10 text-center px-6">
-          <p className="text-[10px] md:text-xs tracking-[0.5em] uppercase text-[var(--gold)] mb-4">Seleção Exclusiva</p>
-          <h2 className="font-display text-6xl md:text-8xl text-white mb-8 tracking-tight">
-            IMPORTADOS
+          <p className="text-[10px] md:text-xs tracking-[0.5em] uppercase text-[var(--gold)] mb-4">Oferta Especial</p>
+          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl text-white tracking-tight">
+            3 CAMISAS POR
+          </h2>
+          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl text-[var(--gold)] mb-8 tracking-tight italic mt-2">
+            R$ 139,90
           </h2>
           <Link
             to="/categoria/$slug"
-            params={{ slug: "importados" }}
-            className="inline-flex items-center gap-4 bg-white text-black px-8 py-4 text-xs font-bold tracking-[0.3em] uppercase rounded-none hover:bg-[var(--gold)] transition-colors duration-300"
+            params={{ slug: "camisas" }}
+            className="inline-flex items-center gap-4 bg-[var(--gold)] text-black px-8 py-4 text-xs font-bold tracking-[0.3em] uppercase rounded-none hover:bg-[var(--gold-bright)] transition-colors duration-300"
           >
-            Conhecer Coleção <span className="ml-2">→</span>
+            Aproveitar Promoção <span className="ml-2">→</span>
           </Link>
         </div>
       </section>

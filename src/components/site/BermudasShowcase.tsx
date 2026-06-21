@@ -80,7 +80,7 @@ export function BermudasShowcase() {
           <Truck className="w-5 h-5 text-[var(--gold)] shrink-0" />
           <p className="text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase text-white font-semibold">
             Frete grátis para todo o Brasil em compras acima de{" "}
-            <span className="text-[var(--gold)]">R$ 199</span>
+            <span className="text-[var(--gold)]">R$ 399</span>
           </p>
         </div>
       </section>
