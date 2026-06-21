@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Layout } from "@/components/site/Layout";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { ProductCard } from "@/components/site/ProductCard";
+import { BermudasShowcase } from "@/components/site/BermudasShowcase";
+import { CapsShowcase } from "@/components/site/CapsShowcase";
 import { CATEGORIES, type Product } from "@/lib/store-data";
 import { getProductsFn } from "@/lib/queries/products";
 import importadosImg from "@/assets/importados-section.jpg";
@@ -97,6 +99,9 @@ function Index() {
           ))}
         </div>
       </section>
+
+      <CapsShowcase />
+      <BermudasShowcase />
       {/* CATEGORIES STRIP */}
       <section className="py-32 px-6 lg:px-10 max-w-[1600px] mx-auto reveal">
         <p className="text-[10px] tracking-[0.5em] uppercase text-[var(--gold)] mb-4 text-center">Universo CN</p>

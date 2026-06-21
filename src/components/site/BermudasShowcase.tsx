@@ -106,8 +106,7 @@ export function BermudasShowcase() {
           >
             <p className="text-[10px] tracking-[0.5em] uppercase text-black/70">Oferta Limitada</p>
             <h3 className="font-display text-3xl md:text-5xl lg:text-6xl text-black leading-[0.95] tracking-tight">
-              Até <span className="italic">40% OFF</span>
-              <br />em itens selecionados
+              3 peças por <span className="italic">R$ 139,90</span>
             </h3>
             <p className="text-sm text-black/70 max-w-md">
               As melhores marcas com preços únicos. Selecione, escolha e leve hoje.
@@ -129,7 +128,7 @@ export function BermudasShowcase() {
             <div className="flex flex-col justify-center gap-5 p-7 lg:p-10">
               <p className="text-[10px] tracking-[0.4em] uppercase text-black/60">Novidades</p>
               <h3 className="font-display text-2xl md:text-3xl lg:text-4xl text-black leading-tight tracking-tight">
-                New <span className="italic">Arrivals</span>
+                Nova <span className="italic">Coleção</span>
               </h3>
               <p className="text-xs lg:text-sm text-black/70">
                 Estilos frescos que acabaram de chegar na loja.

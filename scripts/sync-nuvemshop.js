@@ -23,10 +23,15 @@ async function upsertToSupabase(products) {
     const imagem = p.images?.[0]?.src || null;
     const categoria = p.categories?.[0]?.name?.pt || 'Geral';
 
+    let finalPrice = p.price ? parseFloat(p.price) : 0;
+    if (finalPrice === 0 && p.variants && p.variants.length > 0 && p.variants[0].price) {
+      finalPrice = parseFloat(p.variants[0].price);
+    }
+
     const row = {
       id: p.id,
       nome: p.name?.pt || p.name?.es || p.name?.en || `Produto ${p.id}`,
-      preco: p.price ? parseFloat(p.price) : 0,
+      preco: finalPrice,
       imagem_url: imagem,
       variant_id: variantId,
       categoria: categoria,
