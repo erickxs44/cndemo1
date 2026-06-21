@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Truck, CreditCard, RefreshCw, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import heroModel from "@/assets/hero-model-dark.png";
-import slide2 from "@/assets/hero-imported.jpg";
+import slide2 from "@/assets/promo-3camisas.png";
 import slide3 from "@/assets/hero-slide-3.jpg";
 import productShirt from "@/assets/product-shirt-1.jpg";
 
@@ -22,13 +22,13 @@ const EditorialSlide = () => (
       <img
         src={heroModel}
         alt="CN Store — modelo editorial premium"
-        className="h-full w-auto object-cover object-center opacity-70 lg:opacity-100 max-w-none lg:mr-[5%]"
+        className="h-full w-auto object-cover object-center opacity-70 lg:opacity-100 max-w-none lg:-translate-x-12 xl:-translate-x-32"
         loading="eager"
       />
       {/* Mobile scrim for better text readability */}
       <div className="lg:hidden absolute inset-0 bg-[#080604]/50" />
       {/* Left fade overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#080604] via-[#080604]/80 to-transparent lg:via-[#080604]/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#080604] via-[#080604]/80 to-transparent lg:from-[#080604] lg:via-[#080604]/90 lg:to-transparent" />
       {/* Bottom fade */}
       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#080604] to-transparent" />
     </div>
@@ -112,29 +112,29 @@ const SLIDES: Slide[] = [
   {
     layout: "centered",
     image: slide2,
-    overlayClass: "bg-gradient-to-t from-black/60 to-transparent",
+    overlayClass: "bg-gradient-to-t from-black/80 via-black/40 to-transparent",
     content: (
       <div className="flex flex-col items-center justify-center h-full pt-10">
-        <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-white/80 mb-4 sm:mb-6">Curadoria Internacional</p>
+        <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-white/80 mb-4 sm:mb-6">Oferta Especial</p>
         <h1 className="font-display font-light leading-[1.1]">
           <span className="block text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-widest drop-shadow-lg">
-            PRODUTOS
+            3 CAMISAS POR
           </span>
-          <span className="block text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-widest drop-shadow-lg font-bold italic">
-            IMPORTADOS
+          <span className="block text-[var(--gold)] text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-widest drop-shadow-lg font-bold italic mt-2">
+            R$ 139,90
           </span>
         </h1>
         <p className="text-white/80 text-xs md:text-sm tracking-[0.2em] mt-6 max-w-lg mx-auto font-sans font-light uppercase">
-          As melhores marcas globais, agora ao seu alcance.
+          Renove seu estilo com qualidade premium.
         </p>
         <div className="mt-10 sm:mt-12 flex items-center justify-center">
           <Link
             to="/categoria/$slug"
-            params={{ slug: "importados" }}
-            className="group inline-flex items-center gap-3 border border-white/20 text-white px-8 py-3.5 sm:py-4 text-[10px] sm:text-xs font-medium tracking-[0.3em] uppercase rounded-none hover:border-white/60 hover:bg-white/5 transition-all duration-300"
+            params={{ slug: "camisas" }}
+            className="group inline-flex items-center gap-3 border border-[var(--gold)] bg-[var(--gold)]/10 text-white px-8 py-3.5 sm:py-4 text-[10px] sm:text-xs font-medium tracking-[0.3em] uppercase rounded-none hover:bg-[var(--gold)] hover:text-black transition-all duration-300"
           >
-            Ver Peças Importadas
-            <ArrowRight className="w-4 h-4 text-[var(--gold)] transition-transform group-hover:translate-x-1" />
+            Aproveitar Promoção
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
       </div>
