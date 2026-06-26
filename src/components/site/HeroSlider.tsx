@@ -9,6 +9,7 @@ import productShirt from "@/assets/product-shirt-1.jpg";
 type Slide = {
   layout: "editorial" | "centered";
   image?: string;
+  overlayClass?: string;
   content: ReactNode;
 };
 
@@ -112,26 +113,28 @@ const SLIDES: Slide[] = [
   {
     layout: "centered",
     image: slide2,
-    overlayClass: "bg-gradient-to-t from-black/80 via-black/40 to-transparent",
+    overlayClass: "bg-gradient-to-b from-black/70 via-black/60 to-black/80",
     content: (
-      <div className="flex flex-col items-center justify-center h-full pt-10">
-        <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-white/80 mb-4 sm:mb-6">Oferta Especial</p>
-        <h1 className="font-display font-light leading-[1.1]">
-          <span className="block text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-widest drop-shadow-lg">
-            3 CAMISAS POR
+      <div className="flex flex-col items-center justify-center h-full">
+        <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-[var(--gold)] mb-5 sm:mb-7 font-semibold">
+          Oferta Especial
+        </p>
+        <h1 className="font-display leading-[1.05] text-center drop-shadow-2xl">
+          <span className="block text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+            3 CAMISAS
           </span>
-          <span className="block text-[var(--gold)] text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-widest drop-shadow-lg font-bold italic mt-2">
-            R$ 139,90
+          <span className="block text-[var(--gold)] text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold italic tracking-tight mt-1">
+            por R$ 139,90
           </span>
         </h1>
-        <p className="text-white/80 text-xs md:text-sm tracking-[0.2em] mt-6 max-w-lg mx-auto font-sans font-light uppercase">
-          Renove seu estilo com qualidade premium.
+        <p className="text-white/70 text-xs sm:text-sm tracking-[0.25em] mt-6 sm:mt-8 max-w-sm mx-auto font-light uppercase text-center leading-relaxed">
+          Renove seu guarda-roupa com qualidade premium.
         </p>
-        <div className="mt-10 sm:mt-12 flex items-center justify-center">
+        <div className="mt-8 sm:mt-10 flex items-center justify-center">
           <Link
             to="/categoria/$slug"
             params={{ slug: "camisas" }}
-            className="group inline-flex items-center gap-3 border border-[var(--gold)] bg-[var(--gold)]/10 text-white px-8 py-3.5 sm:py-4 text-[10px] sm:text-xs font-medium tracking-[0.3em] uppercase rounded-none hover:bg-[var(--gold)] hover:text-black transition-all duration-300"
+            className="group inline-flex items-center gap-3 bg-[var(--gold)] text-black px-8 py-4 text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase rounded-full shadow-[0_8px_30px_-8px_rgba(212,168,76,0.6)] hover:bg-[var(--gold-bright)] hover:shadow-[0_12px_40px_-8px_rgba(212,168,76,0.8)] hover:-translate-y-0.5 transition-all duration-300"
           >
             Aproveitar Promoção
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
