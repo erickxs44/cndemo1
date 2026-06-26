@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Truck, CreditCard, RefreshCw, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import heroModel from "@/assets/hero-model-dark.png";
-import slide2 from "@/assets/promo-3camisas.png";
+import slide2 from "@/assets/importados-section.jpg";
 import slide3 from "@/assets/hero-slide-3.jpg";
 import productShirt from "@/assets/product-shirt-1.jpg";
 
@@ -113,30 +113,30 @@ const SLIDES: Slide[] = [
   {
     layout: "centered",
     image: slide2,
-    overlayClass: "bg-gradient-to-b from-black/70 via-black/60 to-black/80",
+    overlayClass: "bg-gradient-to-b from-black/50 via-black/40 to-black/70",
     content: (
       <div className="flex flex-col items-center justify-center h-full">
         <p className="text-[10px] md:text-xs tracking-[0.6em] uppercase text-[var(--gold)] mb-5 sm:mb-7 font-semibold">
-          Oferta Especial
+          Curadoria Internacional
         </p>
         <h1 className="font-display leading-[1.05] text-center drop-shadow-2xl">
-          <span className="block text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight">
-            3 CAMISAS
+          <span className="block text-white text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight">
+            IMPORTADOS
           </span>
-          <span className="block text-[var(--gold)] text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold italic tracking-tight mt-1">
-            por R$ 139,90
+          <span className="block text-white/70 text-base sm:text-xl md:text-2xl font-light tracking-[0.3em] uppercase mt-4">
+            As melhores marcas globais
           </span>
         </h1>
-        <p className="text-white/70 text-xs sm:text-sm tracking-[0.25em] mt-6 sm:mt-8 max-w-sm mx-auto font-light uppercase text-center leading-relaxed">
-          Renove seu guarda-roupa com qualidade premium.
+        <p className="text-white/60 text-xs sm:text-sm tracking-[0.25em] mt-6 sm:mt-8 max-w-sm mx-auto font-light uppercase text-center leading-relaxed">
+          Peaças selecionadas das maiores grifes do mundo.
         </p>
         <div className="mt-8 sm:mt-10 flex items-center justify-center">
           <Link
             to="/categoria/$slug"
-            params={{ slug: "camisas" }}
-            className="group inline-flex items-center gap-3 bg-[var(--gold)] text-black px-8 py-4 text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase rounded-full shadow-[0_8px_30px_-8px_rgba(212,168,76,0.6)] hover:bg-[var(--gold-bright)] hover:shadow-[0_12px_40px_-8px_rgba(212,168,76,0.8)] hover:-translate-y-0.5 transition-all duration-300"
+            params={{ slug: "importados" }}
+            className="group inline-flex items-center gap-3 bg-white text-black px-8 py-4 text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase rounded-none hover:bg-[var(--gold)] transition-all duration-300"
           >
-            Aproveitar Promoção
+            Conhecer Coleção
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
