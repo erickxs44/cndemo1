@@ -63,8 +63,15 @@ export function CartDrawer() {
             <button 
               onClick={checkout} 
               disabled={isSyncing}
-              className="btn-magnetic w-full py-4 bg-[var(--gold)] text-black text-xs font-bold tracking-[0.3em] uppercase hover:bg-[var(--gold-bright)] transition disabled:opacity-50 disabled:cursor-not-allowed">
-              {isSyncing ? 'Sincronizando...' : 'Finalizar Compra →'}
+              className="btn-magnetic w-full py-4 bg-[var(--gold)] text-black text-xs font-bold tracking-[0.3em] uppercase hover:bg-[var(--gold-bright)] transition disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+              {isSyncing ? (
+                <>
+                  <span className="inline-block w-3.5 h-3.5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                  Redirecionando...
+                </>
+              ) : (
+                'Finalizar Compra →'
+              )}
             </button>
             <p className="text-[10px] text-center text-white/30 tracking-wider">Checkout seguro via Nuvemshop</p>
           </div>

@@ -102,11 +102,50 @@ export function CartProvider({ children }: { children: ReactNode }) {
     return newItems;
   });
 
-  const checkout = () => {
-    if (checkoutUrl) {
-      window.location.href = checkoutUrl;
-    } else {
-      console.warn("Checkout URL not available yet");
+  const checkout = async () => {
+    if (items.length === 0) return;
+
+    setIsSyncing(true);
+    try {
+      const payload = items.map(item => ({
+        variant_id: parseInt(item.product.variantId || "0", 10),
+        quantity: item.quantity,
+      })).filter(i => i.variant_id > 0);
+
+      let cart;
+
+      if (payload.length === 0) {
+        // Nenhum produto com variant_id válido — redireciona para loja
+        window.location.href = "https://www.nuvemshop.com.br/loja/7800150";
+        return;
+      }
+
+      // Sempre cria/atualiza o carrinho na Nuvemshop ao clicar em Finalizar Compra
+      if (nuvemshopCartId) {
+        cart = await updateCartFn({ data: { cartId: nuvemshopCartId, items: payload } });
+      } else {
+        cart = await createCartFn({ data: payload });
+      }
+
+      const url = cart.checkout_url;
+
+      // Persiste para próximas visitas
+      setNuvemshopCartId(cart.id);
+      setCheckoutUrl(url);
+      localStorage.setItem("nuvemshop_cart", JSON.stringify({ id: cart.id, url }));
+
+      // Redireciona para o checkout da Nuvemshop
+      window.location.href = url;
+    } catch (err) {
+      console.error("Checkout failed:", err);
+      // Fallback: se já tem URL em cache, tenta usar
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl;
+      } else {
+        alert("Não foi possível iniciar o checkout. Tente novamente.");
+      }
+    } finally {
+      setIsSyncing(false);
     }
   };
 
