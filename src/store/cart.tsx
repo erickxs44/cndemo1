@@ -118,7 +118,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       })).filter(i => i.variantId !== "");
 
       if (checkoutItems.length === 0) {
-        window.location.href = "https://cnstore.lojavirtualnuvem.com.br";
+        window.location.href = "https://cnstore1.lojavirtualnuvem.com.br";
         return;
       }
 
@@ -163,7 +163,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     } catch (err) {
       console.error("Checkout failed:", err);
       // Last resort: go to the store homepage
-      window.location.href = "https://cnstore.lojavirtualnuvem.com.br";
+      window.location.href = "https://cnstore1.lojavirtualnuvem.com.br";
     } finally {
       setIsSyncing(false);
     }

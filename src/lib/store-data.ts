@@ -90,7 +90,7 @@ export const PRODUCTS: Product[] = [
   { id: "c4", variantId: "30004", name: "Cap Royal Crest Gold", brand: "CN Store", category: "bones", price: 119.90, oldPrice: 149.90, image: cap4, colors: [{name:"Marinho",hex:"#0a1530"}], sizes: ["Único"], description: "Bordado dourado em fio metálico sobre marinho profundo. Detalhe de luxo." },
 ];
 
-export const CHECKOUT_DOMAIN = "https://cnstore.lojavirtualnuvem.com.br";
+export const CHECKOUT_DOMAIN = "https://cnstore1.lojavirtualnuvem.com.br";
 
 export function buildCheckoutUrl(items: { variantId: string; quantity: number }[]) {
   if (items.length === 0) return CHECKOUT_DOMAIN;
