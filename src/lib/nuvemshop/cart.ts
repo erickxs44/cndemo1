@@ -25,17 +25,51 @@ export async function getCart(cartId: number): Promise<NuvemshopCart> {
 }
 
 export async function createCart(items: CartItem[]): Promise<NuvemshopCart> {
-  return nuvemshopFetch<NuvemshopCart>('/carts', {
+  // Nuvemshop doesn't have a public POST /carts API for headless checkouts.
+  // We use the Draft Orders API to generate an abandoned_checkout_url.
+  const payload = {
+    contact_name: 'Visitante',
+    contact_lastname: 'Loja',
+    contact_email: 'checkout@cnstore1.lojavirtualnuvem.com.br',
+    products: items.map(item => ({
+      variant_id: item.variant_id,
+      quantity: item.quantity
+    }))
+  };
+
+  const response = await nuvemshopFetch<any>('/draft_orders', {
     method: 'POST',
-    body: JSON.stringify({ items }),
+    body: JSON.stringify(payload),
   });
+
+  return {
+    id: response.id,
+    checkout_url: response.abandoned_checkout_url,
+    total: response.total,
+    subtotal: response.subtotal,
+    items: response.products || [],
+  };
 }
 
-// In Nuvemshop API, to update a cart you typically use PUT on /carts/:id
 export async function updateCart(cartId: number, items: CartItem[]): Promise<NuvemshopCart> {
-  // It usually replaces the whole cart or updates it. According to the docs:
-  return nuvemshopFetch<NuvemshopCart>(`/carts/${cartId}`, {
+  // Update the draft order
+  const payload = {
+    products: items.map(item => ({
+      variant_id: item.variant_id,
+      quantity: item.quantity
+    }))
+  };
+
+  const response = await nuvemshopFetch<any>(`/draft_orders/${cartId}`, {
     method: 'PUT',
-    body: JSON.stringify({ items }),
+    body: JSON.stringify(payload),
   });
+
+  return {
+    id: response.id,
+    checkout_url: response.abandoned_checkout_url,
+    total: response.total,
+    subtotal: response.subtotal,
+    items: response.products || [],
+  };
 }

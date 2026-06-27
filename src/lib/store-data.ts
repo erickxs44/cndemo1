@@ -93,8 +93,7 @@ export const PRODUCTS: Product[] = [
 export const CHECKOUT_DOMAIN = "https://cnstore1.lojavirtualnuvem.com.br";
 
 export function buildCheckoutUrl(items: { variantId: string; quantity: number }[]) {
-  if (items.length === 0) return CHECKOUT_DOMAIN;
-  const first = items[0];
-  const params = items.slice(1).map(i => `&variant_id[]=${i.variantId}&quantity[]=${i.quantity}`).join("");
-  return `${CHECKOUT_DOMAIN}/cart/add/?variant_id=${first.variantId}&quantity=${first.quantity}${params}`;
+  // Since Nuvemshop does not have a native URL-based add-to-cart mechanism without API,
+  // we fallback to the storefront URL in case the API draft order fails.
+  return CHECKOUT_DOMAIN;
 }
