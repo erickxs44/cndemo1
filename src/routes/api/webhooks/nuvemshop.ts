@@ -32,6 +32,7 @@ export const APIRoute = createAPIFileRoute('/api/webhooks/nuvemshop')({
           imagem_url: imagem,
           variant_id: variantId,
           categoria: categoria,
+          variations: p.variants || [],
         };
 
         const { error } = await supabaseAdmin

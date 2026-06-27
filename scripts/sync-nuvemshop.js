@@ -35,6 +35,7 @@ async function upsertToSupabase(products) {
       imagem_url: imagem,
       variant_id: variantId,
       categoria: categoria,
+      variations: p.variants || [],
     };
 
     const res = await fetch(`${SUPABASE_URL}/rest/v1/produtos_nuvemshop?on_conflict=id`, {

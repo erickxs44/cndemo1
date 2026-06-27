@@ -1,6 +1,6 @@
 const STORE_ID = '7800150';
 const ACCESS_TOKEN = '8b8f9e2193c31a79474bd14e5d4d6aa18e20195a';
-const WEBHOOK_URL = 'https://sbqrugvbhqmtdjuowhqe.supabase.co/functions/v1/Receber-produto';
+const WEBHOOK_URL = 'https://cndemo1.vercel.app/api/webhooks/nuvemshop';
 
 const EVENTS = ["product/created", "product/updated", "product/deleted"];
 
