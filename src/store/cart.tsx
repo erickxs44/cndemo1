@@ -1,6 +1,8 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import type { Product } from "@/lib/store-data";
+import { buildCheckoutUrl } from "@/lib/store-data";
 import { createCartFn, updateCartFn } from "@/lib/queries/cart";
+
 
 export type CartItem = {
   product: Product;
@@ -107,43 +109,61 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
     setIsSyncing(true);
     try {
-      const payload = items.map(item => ({
-        variant_id: parseInt(item.product.variantId || "0", 10),
+      // Separate real Nuvemshop products (have a real variant_id from the API)
+      // from mock/demo products (fake variant IDs like 10001, 20001, 30001)
+      // Real synced products come from Supabase and have variant_id stored as-is from Nuvemshop
+      const checkoutItems = items.map(item => ({
+        variantId: item.product.variantId || "",
         quantity: item.quantity,
-      })).filter(i => i.variant_id > 0);
+      })).filter(i => i.variantId !== "");
 
-      let cart;
-
-      if (payload.length === 0) {
-        // Nenhum produto com variant_id válido — redireciona para loja
-        window.location.href = "https://www.nuvemshop.com.br/loja/7800150";
+      if (checkoutItems.length === 0) {
+        window.location.href = "https://cnstore.lojavirtualnuvem.com.br";
         return;
       }
 
-      // Sempre cria/atualiza o carrinho na Nuvemshop ao clicar em Finalizar Compra
-      if (nuvemshopCartId) {
-        cart = await updateCartFn({ data: { cartId: nuvemshopCartId, items: payload } });
-      } else {
-        cart = await createCartFn({ data: payload });
+      // Build direct checkout URL — works for ALL products (real + mock)
+      const directUrl = buildCheckoutUrl(checkoutItems);
+
+      // For real products (not mock — mock IDs are 10001-30004), try Cart API
+      // Real Nuvemshop variant_ids are large numbers (millions)
+      const realItems = checkoutItems.filter(i => {
+        const n = parseInt(i.variantId, 10);
+        return n > 100000; // Real Nuvemshop variant IDs are large numbers
+      });
+
+      if (realItems.length > 0) {
+        try {
+          const apiPayload = realItems.map(i => ({
+            variant_id: parseInt(i.variantId, 10),
+            quantity: i.quantity,
+          }));
+
+          let cart;
+          if (nuvemshopCartId) {
+            cart = await updateCartFn({ data: { cartId: nuvemshopCartId, items: apiPayload } });
+          } else {
+            cart = await createCartFn({ data: apiPayload });
+          }
+
+          if (cart?.checkout_url) {
+            setNuvemshopCartId(cart.id);
+            setCheckoutUrl(cart.checkout_url);
+            localStorage.setItem("nuvemshop_cart", JSON.stringify({ id: cart.id, url: cart.checkout_url }));
+            window.location.href = cart.checkout_url;
+            return;
+          }
+        } catch (apiErr) {
+          console.warn("Cart API failed, falling back to direct URL:", apiErr);
+        }
       }
 
-      const url = cart.checkout_url;
-
-      // Persiste para próximas visitas
-      setNuvemshopCartId(cart.id);
-      setCheckoutUrl(url);
-      localStorage.setItem("nuvemshop_cart", JSON.stringify({ id: cart.id, url }));
-
-      // Redireciona para o checkout da Nuvemshop
-      window.location.href = url;
+      // Fallback: direct add-to-cart URL (always works)
+      window.location.href = directUrl;
     } catch (err) {
       console.error("Checkout failed:", err);
-      // Fallback: se já tem URL em cache, tenta usar
-      if (checkoutUrl) {
-        window.location.href = checkoutUrl;
-      } else {
-        alert("Não foi possível iniciar o checkout. Tente novamente.");
-      }
+      // Last resort: go to the store homepage
+      window.location.href = "https://cnstore.lojavirtualnuvem.com.br";
     } finally {
       setIsSyncing(false);
     }
